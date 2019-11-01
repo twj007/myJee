@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+
+spring:
+  profiles:
+    active: dev,es,quartz,rabbit,redis,sms,db
+
+  # spring-activiti
+  # 自动部署验证设置:true-开启（默认）、false-关闭
+  # asyncExecutorEnabled属性设置设置true后将代替那些老的Job executor
+  # asyncExecutorActivate是指activiti在流程引擎启动就激活AsyncExecutor,异步：true-开启（默认）、false-关闭
+  activiti:
+    check-process-definitions: true
+    async-executor-activate: false
+    async-executor-enabled: false
+    job-executor-activate: false
