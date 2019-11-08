@@ -8,6 +8,52 @@ package com.common.constant;
  **/
 public class CommonConstants {
 
+
+    /**************************************
+     *      *****
+     *    **    ***
+     *   **      ***
+     *   **
+     *    **      ***
+     *     **    ***
+     *       *****
+     *                      common constants**/
+    public static final String SUCCESS = "success";
+    public static final String FAIL = "fail";
+
+    /**************************************
+     * *       *       *
+     *  *     * *     *
+     *   *   *   *   *
+     *    ***     ***       workflow constant**/
+    public static final Integer MINIUIMSIZE = 2;
+
+    public static final String SUSPEND = "suspend";
+
+    public static final String RUNNING = "running";
+
+    public static final String BPMNSUBFIX = "bpmn";
+
+    public static final String ZIPSUBFIX = "zip";
+
+    public static final String NOBODY = "nobody";
+
+    public static final String FINISHED = "finished";
+
+    public static final String START = "start";
+
+    public static final String SELF = "self";
+
+    public static final String ASSIGN = "assign";
+
+    public static final String USERTASK = "userTask";
+
+    /****
+     *  *******
+     *  **
+     *  *******
+     *  **
+     *  *******              encrypt constant**/
     public static final String JWT_KEY = "twj_jien2018";
 
     public static final String AES_KEY = "twl_jien2018_007";
@@ -19,4 +65,6 @@ public class CommonConstants {
     public static final String PREFIX_USER_TOKEN = "USER_TOKEN";
 
     public static final long EXPIRE_TIME = 30 * 60 * 1000;
+
+
 }

@@ -1,6 +1,7 @@
 package com.config;
 
 
+import com.component.NonSecurityGroupManager;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;
@@ -38,22 +39,27 @@ public class ActivtiConfig implements ProcessEngineConfigurationConfigurer {
 
     @Bean
     @Primary
-    SpringProcessEngineConfiguration processEngineConfiguration( DataSource dataSource){
+    SpringProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, NonSecurityGroupManager groupManager){
         SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
         configuration.setDataSource(dataSource);
         configuration.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
+        configuration.setUserGroupManager(groupManager);
         configuration.setAsyncExecutorActivate(false);
         return configuration;
     }
 
     @Bean("processEngine")
     ProcessEngine processEngine(@Qualifier("workflowDatasource") DataSource dataSource,
-                                @Qualifier("workflowTransactionManager") DataSourceTransactionManager transactionManager){
-        return processEngineConfiguration(dataSource).buildProcessEngine();
+                                @Qualifier("workflowTransactionManager") DataSourceTransactionManager transactionManager,
+                                NonSecurityGroupManager g){
+        return processEngineConfiguration(dataSource, g).buildProcessEngine();
     }
 
     @Bean
     ProcessEngineEndpoint processEngineEndpoint(@Qualifier("processEngine")ProcessEngine processEngine){
         return new ProcessEngineEndpoint(processEngine);
     }
+
+
+
 }

@@ -136,23 +136,23 @@ public class ShiroRealm extends AuthorizingRealm {
      * 7、注：当前端接收到Response的Header中的Authorization值会存储起来，作为以后请求token使用
      * 参考方案：https://blog.csdn.net/qq394829044/article/details/82763936
      *
-     * @param userName
-     * @param passWord
+     * @param username
+     * @param password
      * @return
      */
-    public boolean jwtTokenRefresh(String token, String userName, String password) {
-        String cacheToken = String.valueOf(redisTemplate.opsForValue().get(CommonConstants.PREFIX_USER_TOKEN + userName));
+    public boolean jwtTokenRefresh(String token, String username, String password) {
+        String cacheToken = String.valueOf(redisTemplate.opsForValue().get(CommonConstants.PREFIX_USER_TOKEN + username));
         if (ConvertUtils.isNotEmpty(cacheToken)) {
             // 校验token有效性
             if (!EncryptUtils.verify(cacheToken)) {
-                String newAuthorization = EncryptUtils.encode(password, userName);
-                redisTemplate.opsForValue().set(CommonConstants.PREFIX_USER_TOKEN + token, newAuthorization);
+                String newAuthorization = EncryptUtils.encode(password, username);
+                redisTemplate.opsForValue().set(CommonConstants.PREFIX_USER_TOKEN + username, newAuthorization);
                 // 设置超时时间
-                redisTemplate.expire(CommonConstants.PREFIX_USER_TOKEN + token, CommonConstants.EXPIRE_TIME, TimeUnit.MILLISECONDS);
+                redisTemplate.expire(CommonConstants.PREFIX_USER_TOKEN + username, CommonConstants.EXPIRE_TIME, TimeUnit.MILLISECONDS);
             } else {
-                redisTemplate.opsForValue().set(CommonConstants.PREFIX_USER_TOKEN + token, cacheToken);
+                redisTemplate.opsForValue().set(CommonConstants.PREFIX_USER_TOKEN + username, cacheToken);
                 // 设置超时时间
-                redisTemplate.expire(CommonConstants.PREFIX_USER_TOKEN + token, CommonConstants.EXPIRE_TIME, TimeUnit.MILLISECONDS);
+                redisTemplate.expire(CommonConstants.PREFIX_USER_TOKEN + username, CommonConstants.EXPIRE_TIME, TimeUnit.MILLISECONDS);
             }
             return true;
         }

@@ -1,0 +1,5 @@
+spring:
+  activiti:
+    db-history-used: true
+    history-level: activity
+    use-strong-uuids: false

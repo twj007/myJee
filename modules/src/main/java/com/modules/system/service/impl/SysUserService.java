@@ -1,5 +1,6 @@
 package com.modules.system.service.impl;
 
+import com.common.annotation.DataSource;
 import com.common.model.vo.system.SysUser;
 import com.modules.system.dao.SysUserDao;
 import com.modules.system.service.ISysUserService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 /***
@@ -16,7 +18,8 @@ import java.util.Set;
  **@Date: 2019/10/30
  **/
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
+@DataSource
 public class SysUserService implements ISysUserService {
 
     @Autowired
@@ -35,5 +38,10 @@ public class SysUserService implements ISysUserService {
     @Override
     public SysUser getUserByName(String username) {
         return sysUserDao.getUserByName(username);
+    }
+
+    @Override
+    public List<SysUser> findUserByRole(String taskId) {
+        return sysUserDao.findUserByRole(taskId);
     }
 }

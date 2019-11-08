@@ -24,6 +24,10 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/sys")
 public class LoginController {
 
+    private static final String ADMIN_USERNAME = "jien";
+
+    private static final String ADMIN_PASSWORD = "123456";
+
     @Autowired
     private RedisTemplate redisTemplate;
 
@@ -31,11 +35,13 @@ public class LoginController {
     public ResultBody<String> login(LoginUser user, HttpServletRequest request, HttpServletResponse response){
         String token = request.getHeader(CommonConstants.X_ACCESS_TOKEN);
         if(token != null && EncryptUtils.verify(token)){
+            //刷新token并且返回
+
             return Results.SUCCESS.result("当前用户已登陆", null);
         }
-        if("jien".equals(user.getUsername()) && "123456".equals(user.getPassword())){
+        if(ADMIN_USERNAME.equals(user.getUsername()) && ADMIN_PASSWORD.equals(user.getPassword())){
             //颁发token
-            String accessToken = EncryptUtils.encode("123456", user.getUsername());
+            String accessToken = EncryptUtils.encode(ADMIN_PASSWORD, user.getUsername());
             response.setHeader(CommonConstants.X_ACCESS_TOKEN, accessToken);
             redisTemplate.opsForValue().set(CommonConstants.PREFIX_USER_TOKEN+user.getUsername(), accessToken, CommonConstants.EXPIRE_TIME, TimeUnit.MILLISECONDS);
             return Results.SUCCESS.result("登陆成功", null);

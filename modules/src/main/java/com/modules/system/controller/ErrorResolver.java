@@ -26,13 +26,15 @@ public class ErrorResolver {
 
     @ExceptionHandler(AuthenticationException.class)
     public ResultBody resolveUserAuthentication(AuthenticationException e){
-      log.error("{} [exception]: msg:{}, cause: {}", Thread.currentThread().getName(), e.getMessage(), e.getCause());
+      e.printStackTrace();
+      log.error("{} [exception]: msg:{}, cause: {}", Thread.currentThread().getName(), e.getMessage(), e.fillInStackTrace());
       return Results.SUCCESS.result(e.getMessage(), null);
     }
 
     @ExceptionHandler(Exception.class)
     public ResultBody resolveException(Exception e){
-        log.error("{} [exception]: msg:{}, cause: {}", Thread.currentThread().getName(), e.getMessage(), e.getCause());
+        e.printStackTrace();
+        log.error("{} [exception]: msg:{}, cause: {}", Thread.currentThread().getName(), e.getMessage(), e.fillInStackTrace());
         return Results.SUCCESS.result(e.getMessage(), null);
     }
 }

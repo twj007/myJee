@@ -1,15 +1,29 @@
 package com.modules.activiti.controller;
 
+import com.common.constant.CommonConstants;
+import com.common.model.workflow.vo.ProcessDefinationVo;
+import com.common.utils.EncryptUtils;
 import com.common.utils.ResultBody;
+import com.common.utils.Results;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.activiti.engine.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.activiti.engine.history.HistoricTaskInstance;
+import org.activiti.engine.repository.ProcessDefinition;
+import org.springframework.beans.BeanUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 /***
  **@project: myJee
@@ -20,64 +34,60 @@ import java.util.List;
 @RestController
 @RequestMapping("/sys/workflow")
 @Api("流程管理")
-public class WorkflowController {
+@Slf4j
+public class WorkflowController extends BaseController{
 
-    @Autowired
-    private ManagementService managementService;
 
-    @Autowired
-    private RepositoryService repositoryService;
 
-    @Autowired
-    private RuntimeService runtimeService;
-
-    @Autowired
-    private TaskService taskService;
-
-    @Autowired
-    private HistoryService historyService;
 
     @GetMapping("/list")
     @ApiOperation("分页显示流程实例")
-    public ResultBody list(){return null;}
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum", value = "第一条数据的位置"),
+            @ApiImplicitParam(name =  "pageSize", value = "页数据量")
+    })
+    public ResultBody list(int pageNum, int pageSize){
+        List<ProcessDefinition> definitions = repositoryService.createProcessDefinitionQuery().listPage(pageNum, pageSize);
+        List<ProcessDefinationVo> definitionVos = new ArrayList<>();
+        for(ProcessDefinition definition : definitions){
+            ProcessDefinationVo vo = new ProcessDefinationVo();
+            BeanUtils.copyProperties(definition, vo);
+            definitionVos.add(vo);
+        }
+        return Results.SUCCESS.result("success", definitionVos);
+    }
 
     @GetMapping("/findOne")
-    @ApiOperation("查询流程实例详情")
-    public ResultBody findOne(String eventId){return null;}
+    @ApiOperation("查询流程部署详情(最近一次)")
+    @ApiImplicitParam(name = "deployId", value = "流程部署id", allowEmptyValue = false)
+    public ResultBody findOne(String deployId){
+        ProcessDefinition definition = repositoryService.createProcessDefinitionQuery().processDefinitionKey(deployId).latestVersion().singleResult();
+        ProcessDefinationVo vo = new ProcessDefinationVo();
+        BeanUtils.copyProperties(definition, vo);
+        return Results.SUCCESS.result("success", vo);
+    }
 
-    @GetMapping("/cancel")
-    @ApiOperation("取消流程")
-    public ResultBody cancel(){return null;}
 
-    @GetMapping("/start")
-    @ApiOperation("开启流程")
-    public ResultBody startWorkflow(List<Object> params){return null;}
-
-    @GetMapping("/process")
-    @ApiOperation("处理流程")
-    public ResultBody process(){return null;}
-
-    @GetMapping("/select/next")
-    @ApiOperation("查询流程下一个处理人")
-    public ResultBody list(String eventId){return null;}
-
-    @GetMapping("/suspend")
-    @ApiOperation("挂起，恢复流程实例")
-    public ResultBody suspend(){return null;}
-
-    @GetMapping("/deploy")
-    @ApiOperation("部署流程实例")
-    public ResultBody deploy(){return null;}
 
     @GetMapping("/tasks")
     @ApiOperation("获取流程任务")
-    public ResultBody tasks(){return null;}
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "eventId", value = "事务号"),
+            @ApiImplicitParam(name = "request", value = "获取请求头")
+    })
+    public ResultBody tasks(@RequestParam(value = "eventId", required = false) String eventId, HttpServletRequest request, int pageNum, int pageSize){
+        String token = request.getHeader(CommonConstants.X_ACCESS_TOKEN);
+        String username = EncryptUtils.getIssuer(token);
+        boolean isEventIdEmpty = StringUtils.isEmpty(eventId);
+        List<HistoricTaskInstance> links = null;
 
-    @GetMapping("/runningFlow")
-    @ApiOperation("获取部署流程")
-    public ResultBody getRunningInstance(){return null;}
+        if(isEventIdEmpty ){
+            links = historyService.createHistoricTaskInstanceQuery().taskAssignee(username).processFinished().listPage(pageNum, pageSize);
+        }else{
+            links = historyService.createHistoricTaskInstanceQuery().taskAssignee(username).processFinished().processInstanceId(eventId).listPage(pageNum, pageSize);
+        }
 
-    @GetMapping("/giveTo")
-    @ApiOperation("委托处理人处理")
-    public ResultBody giveTo(){return null;}
+        return Results.SUCCESS.result("获取成功", links);
+    }
+
 }

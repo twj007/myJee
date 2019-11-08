@@ -46,7 +46,7 @@ spring:
         reset-enable: false
         url-pattern: /druid/*
         # 添加IP白名单
-        #allow:
+        allow: 127.0.0.1
         # 添加IP黑名单，当白名单和黑名单重复时，黑名单优先级更高
         #deny:
       web-stat-filter:
@@ -54,16 +54,24 @@ spring:
         url-pattern: /**
         # 忽略过滤格式
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico, *.woff, /druid/*"
+        enabled: true
       use-local-session-state: false
-      filter:
+      fileter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
         wall:
-          provider-white-list: 127.0.0.1
+          config:
+            multi-statement-allow: true
+
+
 
 
 #已经通过配置类的方式去实现配置
-#mybatis:
+mybatis:
 #  mapper-locations: classpath*:mapper/**/*Mapper.xml
 #  type-aliases-package: com.common.pojo
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #    map-underscore-to-camel-case: true

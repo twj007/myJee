@@ -19,9 +19,8 @@ import java.util.List;
 @ToString
 public class PageVo {
     private static final String DEFAULT_ORDER = "asc";
-    private int pageSize;
-    private int pageNum;
     private String order;
     private String groupBy;
     private List<?> data;
+    private long size;
 }
