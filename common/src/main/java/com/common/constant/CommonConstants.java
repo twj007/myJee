@@ -66,5 +66,22 @@ public class CommonConstants {
 
     public static final long EXPIRE_TIME = 30 * 60 * 1000;
 
+    /***     *****
+     *     **     **
+     *    **       **
+     *    **       **
+     *     **     **
+     *       ******
+     **            **                         quartz**/
+    public static final String FROZEN = "frozen";
 
+    public static final String UNFROZEN = "unfrozen";
+
+    public static final String INIT = "600";
+
+    public static final String HTTP = "http";
+
+    public static final String KAFKA = "kafka";
+
+    public static final String REDIS = "redis";
 }

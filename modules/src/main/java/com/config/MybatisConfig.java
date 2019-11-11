@@ -18,6 +18,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
@@ -72,7 +73,6 @@ public class MybatisConfig {
     }
 
     @Bean("workflowDatasource")
-    @Primary
     public DataSource systemDataSource() throws SQLException {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(sUrl);
@@ -87,6 +87,7 @@ public class MybatisConfig {
     }
 
     @Bean("systemDatasource")
+    @Primary
     public DataSource workflowDatasource() throws SQLException {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUsername(mUsername);
@@ -154,6 +155,7 @@ public class MybatisConfig {
     @Bean("sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory(@Qualifier("systemDatasource")DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/**/*.xml"));
         bean.setTypeAliasesPackage("com.common.model");
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         // 打印sql
@@ -169,6 +171,7 @@ public class MybatisConfig {
 
 
     @Bean("transactionManager")
+    @Primary
     public DataSourceTransactionManager dataSourceTransactionManager(@Qualifier("workflowDatasource")DataSource dataSource){
         DataSourceTransactionManager manager = new DataSourceTransactionManager();
         manager.setDataSource(dataSource);
@@ -201,7 +204,6 @@ public class MybatisConfig {
 
 
     @Bean("workflowTransactionManager")
-    @Primary
     public DataSourceTransactionManager workflowDataSourceTransactionManager(@Qualifier("workflowDatasource") DataSource dataSource){
         DataSourceTransactionManager manager = new DataSourceTransactionManager();
 

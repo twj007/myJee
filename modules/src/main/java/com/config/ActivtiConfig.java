@@ -11,6 +11,7 @@ import org.activiti.spring.boot.actuate.endpoint.ProcessEngineEndpoint;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -25,6 +26,7 @@ import javax.sql.DataSource;
 
 @Slf4j
 @AutoConfigureAfter(MybatisConfig.class)
+@Configuration
 public class ActivtiConfig implements ProcessEngineConfigurationConfigurer {
 
     @Qualifier("workflowDatasource") DataSource dataSource;
@@ -39,9 +41,10 @@ public class ActivtiConfig implements ProcessEngineConfigurationConfigurer {
 
     @Bean
     @Primary
-    SpringProcessEngineConfiguration processEngineConfiguration(DataSource dataSource, NonSecurityGroupManager groupManager){
+    SpringProcessEngineConfiguration processEngineConfiguration(@Qualifier("workflowDatasource") DataSource dataSource, @Qualifier("workflowTransactionManager") DataSourceTransactionManager transactionManager, NonSecurityGroupManager groupManager){
         SpringProcessEngineConfiguration configuration = new SpringProcessEngineConfiguration();
         configuration.setDataSource(dataSource);
+        configuration.setTransactionManager(transactionManager);
         configuration.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
         configuration.setUserGroupManager(groupManager);
         configuration.setAsyncExecutorActivate(false);
@@ -52,7 +55,7 @@ public class ActivtiConfig implements ProcessEngineConfigurationConfigurer {
     ProcessEngine processEngine(@Qualifier("workflowDatasource") DataSource dataSource,
                                 @Qualifier("workflowTransactionManager") DataSourceTransactionManager transactionManager,
                                 NonSecurityGroupManager g){
-        return processEngineConfiguration(dataSource, g).buildProcessEngine();
+        return processEngineConfiguration(dataSource, transactionManager, g).buildProcessEngine();
     }
 
     @Bean

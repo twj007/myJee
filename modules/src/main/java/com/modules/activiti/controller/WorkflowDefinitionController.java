@@ -21,6 +21,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -211,6 +212,13 @@ public class WorkflowDefinitionController extends BaseController{
 
         }
 
+    }
+
+    @RequestMapping("/panel")
+    @ApiOperation("流程图绘制页面")
+    public ModelAndView panel(ModelAndView modelAndView){
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
 }
