@@ -1,7 +1,7 @@
 package com.config;
 
-import com.component.MyTestJob;
-import org.quartz.*;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
@@ -15,34 +15,33 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 @Configuration
 public class QuartzConfiguration {
     @Bean
-    Scheduler scheduler(SchedulerFactoryBean factory, JobDetail myTestJob) throws SchedulerException {
+    Scheduler scheduler(SchedulerFactoryBean factory) throws SchedulerException {
         Scheduler scheduler = factory.getScheduler();
-        scheduler.addJob(myTestJob, true);
         return scheduler;
     }
 
-    @Bean("myTestJob")
-    JobDetail myTestJob(){
-        return JobBuilder.newJob(MyTestJob.class)
-                .withIdentity("myTestJob")
-                .storeDurably()
-                .withDescription("[it's a job using cron expression]")
-                .build();
-    }
-
-    /**
-     * 把jobDetail注册到Cron表达式的trigger上去
-     */
-    @Bean
-    public Trigger cronJobTrigger(JobDetail myTestJob) {
-        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0/10 * * * * ?");
-
-        return TriggerBuilder.newTrigger()
-                .forJob(myTestJob)
-                .withIdentity("myCornJob")
-                .withSchedule(cronScheduleBuilder)
-                .build();
-    }
+//    @Bean("myTestJob")
+//    JobDetail myTestJob(){
+//        return JobBuilder.newJob(MyTestJob.class)
+//                .withIdentity("myTestJob")
+//                .storeDurably()
+//                .withDescription("[it's a job using cron expression]")
+//                .build();
+//    }
+//
+//    /**
+//     * 把jobDetail注册到Cron表达式的trigger上去
+//     */
+//    @Bean
+//    public Trigger cronJobTrigger(JobDetail myTestJob) {
+//        CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0/10 * * * * ?");
+//
+//        return TriggerBuilder.newTrigger()
+//                .forJob(myTestJob)
+//                .withIdentity("myCornJob")
+//                .withSchedule(cronScheduleBuilder)
+//                .build();
+//    }
 
 
 //    @Bean

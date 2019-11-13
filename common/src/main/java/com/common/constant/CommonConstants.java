@@ -20,6 +20,8 @@ public class CommonConstants {
      *                      common constants**/
     public static final String SUCCESS = "success";
     public static final String FAIL = "fail";
+    public static final long NUM = 1L;
+    public static final String NULL = "null";
 
     /**************************************
      * *       *       *
@@ -73,9 +75,9 @@ public class CommonConstants {
      *     **     **
      *       ******
      **            **                         quartz**/
-    public static final String FROZEN = "frozen";
+    public static final String FROZEN = "FROZEN";
 
-    public static final String UNFROZEN = "unfrozen";
+    public static final String UNFROZEN = "UNFROZEN";
 
     public static final String INIT = "600";
 

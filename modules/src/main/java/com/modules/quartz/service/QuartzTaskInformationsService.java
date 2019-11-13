@@ -3,13 +3,14 @@ package com.modules.quartz.service;
 
 import com.common.model.vo.quartz.QuartzTaskInformations;
 import com.common.utils.ResultBody;
+import org.quartz.SchedulerException;
 
 import java.util.List;
 
 public interface QuartzTaskInformationsService {
-    ResultBody insert(QuartzTaskInformations quartzTaskInformations);
+    ResultBody insert(QuartzTaskInformations quartzTaskInformations) throws SchedulerException;
 
-    List<QuartzTaskInformations> selectList();
+    List<QuartzTaskInformations> selectList(String searchStr);
 
 
     QuartzTaskInformations getTaskById(String id);
@@ -18,9 +19,12 @@ public interface QuartzTaskInformationsService {
 
     QuartzTaskInformations getTaskByTaskNo(String taskNo);
 
-    Integer updateStatusById(QuartzTaskInformations quartzTaskInformations);
+    Long updateStatusById(QuartzTaskInformations quartzTaskInformations);
 
     List<QuartzTaskInformations> getUnnfrozenTasks(String status);
 
-    Integer updateModifyTimeById(QuartzTaskInformations quartzTaskInformations);
+    Long updateModifyTimeById(QuartzTaskInformations quartzTaskInformations);
+
+    ResultBody updateTaskNew(QuartzTaskInformations quartzTaskInformations) throws SchedulerException;
+
 }

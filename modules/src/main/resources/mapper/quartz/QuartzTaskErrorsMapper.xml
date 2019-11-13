@@ -3,14 +3,14 @@
 <mapper namespace="com.modules.quartz.dao.QuartzTaskErrorsMapper">
     <resultMap id="BaseResultMap" type="com.common.model.vo.quartz.QuartzErrorTasks">
         <id column="id" property="id" jdbcType="BIGINT"/>
-        <result column="taskExecuteRecordId" property="taskexecuterecordid" jdbcType="VARCHAR"/>
-        <result column="errorKey" property="errorkey" jdbcType="VARCHAR"/>
-        <result column="createTime" property="createtime" jdbcType="BIGINT"/>
-        <result column="lastModifyTime" property="lastmodifytime" jdbcType="BIGINT"/>
+        <result column="taskExecuteRecordId" property="taskExecuteRecordId" jdbcType="VARCHAR"/>
+        <result column="errorKey" property="errorKey" jdbcType="VARCHAR"/>
+        <result column="createTime" property="createTime" jdbcType="BIGINT"/>
+        <result column="lastModifyTime" property="lastModifyTime" jdbcType="BIGINT"/>
     </resultMap>
     <resultMap id="ResultMapWithBLOBs" type="com.common.model.vo.quartz.QuartzErrorTasks"
                extends="BaseResultMap">
-        <result column="errorValue" property="errorvalue" jdbcType="LONGVARCHAR"/>
+        <result column="errorValue" property="errorValue" jdbcType="LONGVARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
     id, taskExecuteRecordId, errorKey, createTime, lastModifyTime
@@ -34,12 +34,8 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
     <insert id="insert" parameterType="com.common.model.vo.quartz.QuartzErrorTasks">
-    insert into quartz_task_errors (id, taskExecuteRecordId, errorKey, 
-      createTime, lastModifyTime, errorValue
-      )
-    values (#{id,jdbcType=BIGINT}, #{taskexecuterecordid,jdbcType=VARCHAR}, #{errorkey,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=BIGINT}, #{lastmodifytime,jdbcType=BIGINT}, #{errorvalue,jdbcType=LONGVARCHAR}
-      )
+    insert into quartz_task_errors (id, taskExecuteRecordId, errorKey, createTime, lastModifyTime, errorValue)
+    values (#{id,jdbcType=BIGINT}, #{taskExecuteRecordId,jdbcType=VARCHAR}, #{errorKey,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, #{lastModifyTime,jdbcType=BIGINT}, #{errorValue,jdbcType=LONGVARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.common.model.vo.quartz.QuartzErrorTasks">
         insert into quartz_task_errors
@@ -47,19 +43,19 @@
             <if test="id != null">
                 id,
             </if>
-            <if test="taskexecuterecordid != null">
+            <if test="taskExecuteRecordId != null">
                 taskExecuteRecordId,
             </if>
-            <if test="errorkey != null">
+            <if test="errorKey != null">
                 errorKey,
             </if>
-            <if test="createtime != null">
+            <if test="createTime != null">
                 createTime,
             </if>
-            <if test="lastmodifytime != null">
+            <if test="lastModifyTime != null">
                 lastModifyTime,
             </if>
-            <if test="errorvalue != null">
+            <if test="errorValue != null">
                 errorValue,
             </if>
         </trim>
@@ -67,59 +63,59 @@
             <if test="id != null">
                 #{id,jdbcType=BIGINT},
             </if>
-            <if test="taskexecuterecordid != null">
-                #{taskexecuterecordid,jdbcType=VARCHAR},
+            <if test="taskExecuteRecordId != null">
+                #{taskExecuteRecordId,jdbcType=VARCHAR},
             </if>
-            <if test="errorkey != null">
-                #{errorkey,jdbcType=VARCHAR},
+            <if test="errorKey != null">
+                #{errorKey,jdbcType=VARCHAR},
             </if>
-            <if test="createtime != null">
-                #{createtime,jdbcType=BIGINT},
+            <if test="createTime != null">
+                #{createTime,jdbcType=BIGINT},
             </if>
-            <if test="lastmodifytime != null">
-                #{lastmodifytime,jdbcType=BIGINT},
+            <if test="lastModifyTime != null">
+                #{lastModifyTime,jdbcType=BIGINT},
             </if>
-            <if test="errorvalue != null">
-                #{errorvalue,jdbcType=LONGVARCHAR},
+            <if test="errorValue != null">
+                #{errorValue,jdbcType=LONGVARCHAR},
             </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.common.model.vo.quartz.QuartzErrorTasks">
         update quartz_task_errors
         <set>
-            <if test="taskexecuterecordid != null">
-                taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR},
+            <if test="taskExecuteRecordId != null">
+                taskExecuteRecordId = #{taskExecuteRecordId,jdbcType=VARCHAR},
             </if>
-            <if test="errorkey != null">
-                errorKey = #{errorkey,jdbcType=VARCHAR},
+            <if test="errorKey != null">
+                errorKey = #{errorKey,jdbcType=VARCHAR},
             </if>
-            <if test="createtime != null">
-                createTime = #{createtime,jdbcType=BIGINT},
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=BIGINT},
             </if>
-            <if test="lastmodifytime != null">
-                lastModifyTime = #{lastmodifytime,jdbcType=BIGINT},
+            <if test="lastModifyTime != null">
+                lastModifyTime = #{lastModifyTime,jdbcType=BIGINT},
             </if>
-            <if test="errorvalue != null">
-                errorValue = #{errorvalue,jdbcType=LONGVARCHAR},
+            <if test="errorValue != null">
+                errorValue = #{errorValue,jdbcType=LONGVARCHAR},
             </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.common.model.vo.quartz.QuartzErrorTasks">
     update quartz_task_errors
-    set taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR},
-      errorKey = #{errorkey,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=BIGINT},
-      lastModifyTime = #{lastmodifytime,jdbcType=BIGINT},
-      errorValue = #{errorvalue,jdbcType=LONGVARCHAR}
+    set taskExecuteRecordId = #{taskExecuteRecordId,jdbcType=VARCHAR},
+      errorKey = #{errorKey,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=BIGINT},
+      lastModifyTime = #{lastModifyTime,jdbcType=BIGINT},
+      errorValue = #{errorValue,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
     <update id="updateByPrimaryKey" parameterType="com.common.model.vo.quartz.QuartzErrorTasks">
     update quartz_task_errors
-    set taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR},
-      errorKey = #{errorkey,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=BIGINT},
-      lastModifyTime = #{lastmodifytime,jdbcType=BIGINT}
+    set taskExecuteRecordId = #{taskExecuteRecordId,jdbcType=VARCHAR},
+      errorKey = #{errorKey,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=BIGINT},
+      lastModifyTime = #{lastModifyTime,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 

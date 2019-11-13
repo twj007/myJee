@@ -14,19 +14,19 @@ import lombok.EqualsAndHashCode;
 public class QuartzTaskRecords {
     private Long id;
 
-    private String taskno;
+    private String taskNo;
 
-    private String timekeyvalue;
+    private String timeKeyValue;
 
-    private Long executetime;
+    private Long executeTime;
 
-    private String taskstatus;
+    private String taskStatus;
 
-    private Integer failcount;
+    private Integer failCount;
 
-    private String failreason;
+    private String failReason;
 
-    private Long createtime;
+    private Long createTime;
 
-    private Long lastmodifytime;
+    private Long lastModifyTime;
 }

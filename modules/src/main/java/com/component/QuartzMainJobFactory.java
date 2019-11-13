@@ -1,7 +1,6 @@
 package com.component;
 
 import com.common.constant.CommonConstants;
-import com.common.model.vo.quartz.QuartzTaskInformations;
 import com.common.model.vo.quartz.QuartzTaskRecords;
 import com.common.utils.ResultBody;
 import com.common.utils.SpringBeanFactoryUtils;
@@ -42,13 +41,14 @@ public class QuartzMainJobFactory implements Job {
         String sendType = jobDataMap.getString("sendType");
         String url = jobDataMap.getString("url");
         String executeParameter = jobDataMap.getString("executeParameter");
+        String version = jobDataMap.getString("version");
         log.info("定时任务被执行:taskNo={},executorNo={},sendType={},url={},executeParameter={}", taskNo, executorNo, sendType, url, executeParameter);
         QuartzService quartzService =  SpringBeanFactoryUtils.getBean(QuartzService.class);
         QuartzTaskRecords records = null;
         try {
             //保存定时任务的执行记录
             records = quartzService.addTaskRecords(taskNo);
-            if (null == records || !CommonConstants.INIT.equals(records.getTaskstatus())) {
+            if (null == records || !CommonConstants.INIT.equals(records.getTaskStatus())) {
                 log.info("taskNo={}保存执行记录失败", taskNo);
                 return;
             }
@@ -91,9 +91,6 @@ public class QuartzMainJobFactory implements Job {
         }
 
         quartzService.updateRecordById(atomicInteger.get(), records.getId());
-        QuartzTaskInformations quartzTaskInformation = new QuartzTaskInformations();
-        quartzTaskInformation.setId(Long.parseLong(id));
-        quartzTaskInformation.setLastmodifytime(System.currentTimeMillis());
-        quartzService.updateTask(quartzTaskInformation);
+        // 留着，当kafka redis时。记录
     }
 }

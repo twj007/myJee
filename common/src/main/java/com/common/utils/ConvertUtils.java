@@ -1,5 +1,7 @@
 package com.common.utils;
 
+import com.common.constant.CommonConstants;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -29,6 +31,8 @@ import javax.servlet.http.HttpServletRequest;
  *
  */
 public class ConvertUtils {
+	public static final Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+
 	public static boolean isEmpty(Object object) {
 		if (object == null) {
 			return (true);
@@ -36,14 +40,14 @@ public class ConvertUtils {
 		if ("".equals(object)) {
 			return (true);
 		}
-		if ("null".equals(object)) {
+		if (CommonConstants.NULL.equals(object)) {
 			return (true);
 		}
 		return (false);
 	}
 	
 	public static boolean isNotEmpty(Object object) {
-		if (object != null && !object.equals("") && !object.equals("null")) {
+		if (object != null && !"".equals(object) && !CommonConstants.NULL.equals(object)) {
 			return (true);
 		}
 		return (false);
@@ -68,7 +72,7 @@ public class ConvertUtils {
 
 	private static String code2code(String strIn, String sourceCode, String targetCode) {
 		String strOut = null;
-		if (strIn == null || (strIn.trim()).equals("")) {
+		if (strIn == null || "".equals(strIn.trim())) {
 			return strIn;
 		}
 		try {
@@ -335,7 +339,6 @@ public class ConvertUtils {
 	public static String replaceBlank(String str) {
 		String dest = "";
 		if (str != null) {
-			Pattern p = Pattern.compile("\\s*|\t|\r|\n");
 			Matcher m = p.matcher(str);
 			dest = m.replaceAll("");
 		}
@@ -398,7 +401,7 @@ public class ConvertUtils {
 		long bEnd = getIpNum("172.31.255.255");
 		long cBegin = getIpNum("192.168.0.0");
 		long cEnd = getIpNum("192.168.255.255");
-		isInnerIp = isInner(ipNum, aBegin, aEnd) || isInner(ipNum, bBegin, bEnd) || isInner(ipNum, cBegin, cEnd) || ipAddress.equals("127.0.0.1");
+		isInnerIp = isInner(ipNum, aBegin, aEnd) || isInner(ipNum, bBegin, bEnd) || isInner(ipNum, cBegin, cEnd) || "127.0.0.1".equals(ipAddress);
 		return isInnerIp;
 	}
 
@@ -469,7 +472,7 @@ public class ConvertUtils {
 	 * @return 转换后的驼峰式命名的字符串
 	 */
 	public static String camelNames(String names) {
-		if(names==null||names.equals("")){
+		if(names==null||"".equals(names)){
 			return null;
 		}
 		StringBuffer sf = new StringBuffer();

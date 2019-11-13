@@ -17,7 +17,7 @@ public interface QuartzTaskInformationsMapper {
 
     QuartzTaskInformations selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(QuartzTaskInformations record);
+    Long updateByPrimaryKeySelective(QuartzTaskInformations record);
 
     int updateByPrimaryKey(QuartzTaskInformations record);
 

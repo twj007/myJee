@@ -17,29 +17,29 @@ public class QuartzTaskInformations {
 
     private Integer version;
 
-    private String taskno;
+    private String taskNo;
 
-    private String taskname;
+    private String taskName;
 
-    private String schedulerrule;
+    private String schedulerRule;
 
-    private String frozenstatus;
+    private String frozenStatus;
 
-    private String executorno;
+    private String executorNo;
 
-    private Long frozentime;
+    private Long frozenTime;
 
-    private Long unfrozentime;
+    private Long unfrozenTime;
 
-    private Long createtime;
+    private Long createTime;
 
-    private Long lastmodifytime;
+    private Long lastModifyTime;
 
-    private String sendtype;
+    private String sendType;
 
     private String url;
 
-    private String executeparamter;
+    private String executeParamter;
 
-    private String timekey;
+    private String timeKey;
 }

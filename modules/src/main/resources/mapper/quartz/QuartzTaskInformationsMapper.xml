@@ -4,19 +4,19 @@
     <resultMap id="BaseResultMap" type="com.common.model.vo.quartz.QuartzTaskInformations">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="version" property="version" jdbcType="INTEGER"/>
-        <result column="taskNo" property="taskno" jdbcType="VARCHAR"/>
-        <result column="taskName" property="taskname" jdbcType="VARCHAR"/>
-        <result column="schedulerRule" property="schedulerrule" jdbcType="VARCHAR"/>
-        <result column="frozenStatus" property="frozenstatus" jdbcType="VARCHAR"/>
-        <result column="executorNo" property="executorno" jdbcType="VARCHAR"/>
-        <result column="frozenTime" property="frozentime" jdbcType="BIGINT"/>
-        <result column="unfrozenTime" property="unfrozentime" jdbcType="BIGINT"/>
-        <result column="createTime" property="createtime" jdbcType="BIGINT"/>
-        <result column="lastModifyTime" property="lastmodifytime" jdbcType="BIGINT"/>
-        <result column="sendType" property="sendtype" jdbcType="VARCHAR"/>
+        <result column="taskNo" property="taskNo" jdbcType="VARCHAR"/>
+        <result column="taskName" property="taskName" jdbcType="VARCHAR"/>
+        <result column="schedulerRule" property="schedulerRule" jdbcType="VARCHAR"/>
+        <result column="frozenStatus" property="frozenStatus" jdbcType="VARCHAR"/>
+        <result column="executorNo" property="executorNo" jdbcType="VARCHAR"/>
+        <result column="frozenTime" property="frozenTime" jdbcType="BIGINT"/>
+        <result column="unfrozenTime" property="unfrozenTime" jdbcType="BIGINT"/>
+        <result column="createTime" property="createTime" jdbcType="BIGINT"/>
+        <result column="lastModifyTime" property="lastModifyTime" jdbcType="BIGINT"/>
+        <result column="sendType" property="sendType" jdbcType="VARCHAR"/>
         <result column="url" property="url" jdbcType="VARCHAR"/>
-        <result column="executeParamter" property="executeparamter" jdbcType="VARCHAR"/>
-        <result column="timeKey" property="timekey" jdbcType="VARCHAR"/>
+        <result column="executeParamter" property="executeParamter" jdbcType="VARCHAR"/>
+        <result column="timeKey" property="timeKey" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
     id, version, taskNo, taskName, schedulerRule, frozenStatus, executorNo, frozenTime, 
@@ -39,11 +39,11 @@
       createTime, lastModifyTime, sendType, 
       url, executeParamter, timeKey
       )
-    values (#{id,jdbcType=BIGINT}, #{version,jdbcType=INTEGER}, #{taskno,jdbcType=VARCHAR}, 
-      #{taskname,jdbcType=VARCHAR}, #{schedulerrule,jdbcType=VARCHAR}, #{frozenstatus,jdbcType=VARCHAR}, 
-      #{executorno,jdbcType=VARCHAR}, #{frozentime,jdbcType=BIGINT}, #{unfrozentime,jdbcType=BIGINT}, 
-      #{createtime,jdbcType=BIGINT}, #{lastmodifytime,jdbcType=BIGINT}, #{sendtype,jdbcType=VARCHAR}, 
-      #{url,jdbcType=VARCHAR}, #{executeparamter,jdbcType=VARCHAR}, #{timekey,jdbcType=VARCHAR}
+    values (#{id,jdbcType=BIGINT}, #{version,jdbcType=INTEGER}, #{taskNo,jdbcType=VARCHAR},
+      #{taskName,jdbcType=VARCHAR}, #{schedulerRule,jdbcType=VARCHAR}, #{frozenStatus,jdbcType=VARCHAR},
+      #{executorNo,jdbcType=VARCHAR}, #{frozenTime,jdbcType=BIGINT}, #{unfrozenTime,jdbcType=BIGINT},
+      #{createTime,jdbcType=BIGINT}, #{lastModifyTime,jdbcType=BIGINT}, #{sendType,jdbcType=VARCHAR},
+      #{url,jdbcType=VARCHAR}, #{executeParamter,jdbcType=VARCHAR}, #{timeKey,jdbcType=VARCHAR}
       )
   </insert>
     <insert id="insertSelective" parameterType="com.common.model.vo.quartz.QuartzTaskInformations">
@@ -55,43 +55,43 @@
             <if test="version != null">
                 version,
             </if>
-            <if test="taskno != null">
+            <if test="taskNo != null">
                 taskNo,
             </if>
-            <if test="taskname != null">
+            <if test="taskName != null">
                 taskName,
             </if>
-            <if test="schedulerrule != null">
+            <if test="scheduleRrule != null">
                 schedulerRule,
             </if>
-            <if test="frozenstatus != null">
+            <if test="frozenStatus != null">
                 frozenStatus,
             </if>
-            <if test="executorno != null">
+            <if test="executorNo != null">
                 executorNo,
             </if>
-            <if test="frozentime != null">
+            <if test="frozenTime != null">
                 frozenTime,
             </if>
-            <if test="unfrozentime != null">
+            <if test="unfrozenTime != null">
                 unfrozenTime,
             </if>
-            <if test="createtime != null">
+            <if test="createTime != null">
                 createTime,
             </if>
-            <if test="lastmodifytime != null">
+            <if test="lastModifyTime != null">
                 lastModifyTime,
             </if>
-            <if test="sendtype != null">
+            <if test="sendType != null">
                 sendType,
             </if>
             <if test="url != null">
                 url,
             </if>
-            <if test="executeparamter != null">
+            <if test="executeParamter != null">
                 executeParamter,
             </if>
-            <if test="timekey != null">
+            <if test="timeKey != null">
                 timeKey,
             </if>
         </trim>
@@ -102,44 +102,44 @@
             <if test="version != null">
                 #{version,jdbcType=INTEGER},
             </if>
-            <if test="taskno != null">
-                #{taskno,jdbcType=VARCHAR},
+            <if test="taskNo != null">
+                #{taskNo,jdbcType=VARCHAR},
             </if>
-            <if test="taskname != null">
-                #{taskname,jdbcType=VARCHAR},
+            <if test="taskName != null">
+                #{taskName,jdbcType=VARCHAR},
             </if>
-            <if test="schedulerrule != null">
-                #{schedulerrule,jdbcType=VARCHAR},
+            <if test="schedulerRule != null">
+                #{schedulerRule,jdbcType=VARCHAR},
             </if>
-            <if test="frozenstatus != null">
-                #{frozenstatus,jdbcType=VARCHAR},
+            <if test="frozenStatus != null">
+                #{frozenStatus,jdbcType=VARCHAR},
             </if>
-            <if test="executorno != null">
-                #{executorno,jdbcType=VARCHAR},
+            <if test="executorNo != null">
+                #{executorNo,jdbcType=VARCHAR},
             </if>
-            <if test="frozentime != null">
-                #{frozentime,jdbcType=BIGINT},
+            <if test="frozenTime != null">
+                #{frozenTime,jdbcType=BIGINT},
             </if>
-            <if test="unfrozentime != null">
-                #{unfrozentime,jdbcType=BIGINT},
+            <if test="unfrozenTime != null">
+                #{unfrozenTime,jdbcType=BIGINT},
             </if>
-            <if test="createtime != null">
-                #{createtime,jdbcType=BIGINT},
+            <if test="createTime != null">
+                #{createTime,jdbcType=BIGINT},
             </if>
-            <if test="lastmodifytime != null">
-                #{lastmodifytime,jdbcType=BIGINT},
+            <if test="lastModifyTime != null">
+                #{lastModifyTime,jdbcType=BIGINT},
             </if>
-            <if test="sendtype != null">
-                #{sendtype,jdbcType=VARCHAR},
+            <if test="sendType != null">
+                #{sendType,jdbcType=VARCHAR},
             </if>
             <if test="url != null">
                 #{url,jdbcType=VARCHAR},
             </if>
-            <if test="executeparamter != null">
-                #{executeparamter,jdbcType=VARCHAR},
+            <if test="executeParamter != null">
+                #{executeParamter,jdbcType=VARCHAR},
             </if>
-            <if test="timekey != null">
-                #{timekey,jdbcType=VARCHAR},
+            <if test="timeKey != null">
+                #{timeKey,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -150,64 +150,64 @@
             <if test="version != null">
                 version = version+1,
             </if>
-            <if test="taskno != null">
-                taskNo = #{taskno,jdbcType=VARCHAR},
+            <if test="taskNo != null">
+                taskNo = #{taskNo,jdbcType=VARCHAR},
             </if>
-            <if test="taskname != null">
-                taskName = #{taskname,jdbcType=VARCHAR},
+            <if test="taskName != null">
+                taskName = #{taskName,jdbcType=VARCHAR},
             </if>
-            <if test="schedulerrule != null">
-                schedulerRule = #{schedulerrule,jdbcType=VARCHAR},
+            <if test="schedulerRule != null">
+                schedulerRule = #{schedulerRule,jdbcType=VARCHAR},
             </if>
-            <if test="frozenstatus != null">
-                frozenStatus = #{frozenstatus,jdbcType=VARCHAR},
+            <if test="frozenStatus != null">
+                frozenStatus = #{frozenStatus,jdbcType=VARCHAR},
             </if>
-            <if test="executorno != null">
-                executorNo = #{executorno,jdbcType=VARCHAR},
+            <if test="executorNo != null">
+                executorNo = #{executorNo,jdbcType=VARCHAR},
             </if>
-            <if test="frozentime != null">
-                frozenTime = #{frozentime,jdbcType=BIGINT},
+            <if test="frozenTime != null">
+                frozenTime = #{frozenTime,jdbcType=BIGINT},
             </if>
-            <if test="unfrozentime != null">
-                unfrozenTime = #{unfrozentime,jdbcType=BIGINT},
+            <if test="unfrozenTime != null">
+                unfrozenTime = #{unfrozenTime,jdbcType=BIGINT},
             </if>
-            <if test="createtime != null">
-                createTime = #{createtime,jdbcType=BIGINT},
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=BIGINT},
             </if>
-            <if test="lastmodifytime != null">
-                lastModifyTime = #{lastmodifytime,jdbcType=BIGINT},
+            <if test="lastModifyTime != null">
+                lastModifyTime = #{lastModifyTime,jdbcType=BIGINT},
             </if>
-            <if test="sendtype != null">
-                sendType = #{sendtype,jdbcType=VARCHAR},
+            <if test="sendType != null">
+                sendType = #{sendType,jdbcType=VARCHAR},
             </if>
             <if test="url != null">
                 url = #{url,jdbcType=VARCHAR},
             </if>
-            <if test="executeparamter != null">
-                executeParamter = #{executeparamter,jdbcType=VARCHAR},
+            <if test="executeParamter != null">
+                executeParamter = #{executeParamter,jdbcType=VARCHAR},
             </if>
-            <if test="timekey != null">
-                timeKey = #{timekey,jdbcType=VARCHAR},
+            <if test="timeKey != null">
+                timeKey = #{timeKey,jdbcType=VARCHAR},
             </if>
         </set>
-        where id = #{id,jdbcType=BIGINT} and version = #{version}
+        where taskNo = #{taskNo,jdbcType=VARCHAR} and version = #{version}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.common.model.vo.quartz.QuartzTaskInformations">
     update quartz_task_informations
     set version = #{version,jdbcType=INTEGER},
-      taskNo = #{taskno,jdbcType=VARCHAR},
-      taskName = #{taskname,jdbcType=VARCHAR},
-      schedulerRule = #{schedulerrule,jdbcType=VARCHAR},
-      frozenStatus = #{frozenstatus,jdbcType=VARCHAR},
-      executorNo = #{executorno,jdbcType=VARCHAR},
-      frozenTime = #{frozentime,jdbcType=BIGINT},
-      unfrozenTime = #{unfrozentime,jdbcType=BIGINT},
-      createTime = #{createtime,jdbcType=BIGINT},
-      lastModifyTime = #{lastmodifytime,jdbcType=BIGINT},
-      sendType = #{sendtype,jdbcType=VARCHAR},
+      taskNo = #{taskNo,jdbcType=VARCHAR},
+      taskName = #{taskName,jdbcType=VARCHAR},
+      schedulerRule = #{schedulerRule,jdbcType=VARCHAR},
+      frozenStatus = #{frozenStatus,jdbcType=VARCHAR},
+      executorNo = #{executorNo,jdbcType=VARCHAR},
+      frozenTime = #{frozenTime,jdbcType=BIGINT},
+      unfrozenTime = #{unfrozenTime,jdbcType=BIGINT},
+      createTime = #{createTime,jdbcType=BIGINT},
+      lastModifyTime = #{lastModifyTime,jdbcType=BIGINT},
+      sendType = #{sendType,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
-      executeParamter = #{executeparamter,jdbcType=VARCHAR},
-      timeKey = #{timekey,jdbcType=VARCHAR}
+      executeParamter = #{executeParamter,jdbcType=VARCHAR},
+      timeKey = #{timeKey,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 
@@ -215,23 +215,23 @@
         select
         <include refid="Base_Column_List"/>
         from quartz_task_informations
-        <if test="taskNo != null">
-            <where>
-                taskNo = #{taskNo}
-            </where>
-        </if>
+        <where>
+            <if test='searchStr != null and searchStr != ""'>
+                taskNo = #{searchStr} or taskName = #{searchStr} or executorNo = #{searchStr}
+            </if>
+        </where>
         order by id desc
     </select>
 
     <select id="selectByTaskNo" parameterType="java.lang.String" resultType="java.lang.Integer">
-    select count(*) from quartz_task_informations where taskNo=#{taskno}
+    select count(*) from quartz_task_informations where taskNo=#{taskNo}
   </select>
 
     <select id="getTaskByTaskNo" parameterType="java.lang.String"
             resultType="com.common.model.vo.quartz.QuartzTaskInformations">
         select
         <include refid="Base_Column_List"/>
-        from quartz_task_informations where taskNo = #{taskno}
+        from quartz_task_informations where taskNo = #{taskNo}
     </select>
 
     <select id="getUnfrozenTasks" parameterType="java.lang.String" resultMap="BaseResultMap">

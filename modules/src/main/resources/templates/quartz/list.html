@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>定时任务后台管理页面</title>
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/animate.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/mediaelementplayer.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/red.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/simple-line-icons.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}"/>
+</head>
+<body>
+<div class="col-md-12 top-20 padding-0">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="col-md-12 padding-0" style="padding-bottom:20px;">
+                    <h2>定时任务列表</h2>
+                    <hr/>
+                    <div class="col-md-6" style="padding-left:10px;">
+                        <form action="import" method="post">
+                            <input type="button" class="btn  btn-raised btn-success" onclick="addNewTask()"
+                                   value="新增定时任务"/>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-lg-12">
+                            <form onsubmit="return false;">
+                                <div class="input-group">
+                                    <input type="input" class="form-control" aria-label="..." placeholder="编号 名称 执行方" name="searchStr" id="searchStr"/>
+                                    <div class="input-group-btn">
+                                        <input type="submit" onclick="getListData()" class="btn  btn-raised btn-success" value="搜索"/>&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="responsive-table">
+                    <table class="table table-striped table-bordered" width="100%" cellspacing="0" style="text-align:center;vertical-align:middle;">
+                        <thead>
+                        <tr>
+                            <th style="text-align:center;vertical-align:middle;">任务编号</th>
+                            <th style="text-align:center;vertical-align:middle;">任务名称</th>
+                            <th style="text-align:center;vertical-align:middle;">定时配置cron</th>
+                            <th style="text-align:center;vertical-align:middle;">冻结状态</th>
+                            <th style="text-align:center;vertical-align:middle;">执行方</th>
+                            <th style="text-align:center;vertical-align:middle;">执行方式</th>
+                            <th style="text-align:center;vertical-align:middle;">创建时间</th>
+                            <th style="text-align:center;vertical-align:middle;">最后修改时间</th>
+                            <th style="text-align:center;vertical-align:middle;">操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="col-md-6" style="padding-top:20px;">
+                    总共<span style="color: red;" id="total" th:text="${size}"/>条记录
+                </div>
+
+                <div class="col-md-6">
+                    <ul class="pagination pull-right" id="page">
+                        <li>
+                            <a href="#" aria-label="Previous" onclick="previousPage()">
+                                <span aria-hidden="true">上一页</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">5</a>
+                        </li>
+                        <li>
+                            <a href="#" aria-label="Next" onclick="nextPage()">
+                                <span aria-hidden="true">下一页</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:inline="javascript">
+    $(function(){
+        $('table').append('<tbody>数据加载中，请稍后...</tbody>');
+        getListData();
+    });
+
+    function getListData(pageNum){
+        $.ajax({
+            url: '/quartz/task/list',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                pageNum: pageNum || parseInt($('.active').text().trim()) - 1 || 0,
+                searchStr: $('#searchStr').val()
+            },
+            success: function(data){
+                if(data.code == 200){
+                    var page = data.body;
+                    $('tbody').remove();
+                    if(page){
+                        var length = page.data.length;
+                        if(!length || length == 0){
+                            $('table').append('<tr>无数据</tr>');
+                            $('#total').text(0);
+                            $('#page li').remove();
+                            $('#page').append('<li><a href="#" aria-label="Previous">\n<span aria-hidden="true">上一页</span></a></li>' +
+                                              '<li><a href="#" aria-label="Next"><span aria-hidden="true">下一页</span></a></li>');
+                            return;
+                        }
+                        //1. 渲染数据到表单
+                        var html = '<tbody>';
+                        for(var i = 0; i < length; i ++){
+                            var isFrozen = page.data[i].frozenStatus == "FROZEN" ? true : false;
+                            html += '<tr>';
+                            html += '<td><a href="/quartz/task/record/page?taskNo='+page.data[i].taskNo.trim()+'">'+page.data[i].taskNo+'</a></td>';
+                            html += '<td>'+page.data[i].taskName+'</td>';
+                            html += '<td>'+page.data[i].schedulerRule+'</td>';
+                            if(isFrozen){
+                                html += '<td><span style="color:red;">已冻结</span></td>';
+                            }else{
+                                html += '<td><span>未冻结</span></td>';
+                            }
+                            html += '<td>'+page.data[i].executorNo+'</td>';
+                            html += '<td>'+page.data[i].sendType+'</td>';
+                            html += '<td>'+new Date(page.data[i].createTime).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ").replace(/上午|下午|晚上/g, '');+'</td>';
+                            html += '<td>'+new Date(page.data[i].lastModifyTime).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ").replace(/上午|下午|晚上/g, '');+'</td>';
+                            if(isFrozen){
+                                html += '<td><span> <input type="button" class="btn  btn-3d btn-success" value="启动" onclick="javascript:startOrStop(\''+page.data[i].taskNo+'\')"></span><input type="button" class="btn btn-3d btn-success" onclick="javascript:runRightNow(\''+page.data[0].taskNo+'\')" value="立刻运行一次"/> <input type="button" class="btn btn-3d btn-success" onclick="javascript:editpage(\''+page.data[0].id+'\')" value="修改"/></td>';
+                            }else{
+                                html += '<td><span> <input type="button" class="btn  btn-3d btn-success" value="暂停" onclick="javascript:startOrStop(\''+page.data[i].taskNo+'\')"></span><input type="button" class="btn btn-3d btn-success" onclick="javascript:runRightNow(\''+page.data[0].taskNo+'\')" value="立刻运行一次"/> <input type="button" class="btn btn-3d btn-success" onclick="javascript:editpage(\''+page.data[0].id+'\')" value="修改"/></td>';
+                            }
+                            html += '</tr>';
+                        }
+                        html += '</tbody>';
+                        $('table').append(html);
+                        //2. 调整分页页数
+                        $('#page li').remove();
+                        var pagenation = '<li><a href="#" aria-label="Previous" onclick="previousPage()">\n<span aria-hidden="true">上一页</span></a></li>';
+                        for(var j = 0; j < page.pageNum; j++){
+                            if((j+1) == page.currentPage){
+                                pagenation += '<li class="active"><a href="#">'+(j+1)+'</a></li>'
+                                continue;
+                            }
+                            pagenation += '<li><a href="#" onclick="jump('+j+')">'+(j+1)+'</a></li>'
+
+                        }
+                        pagenation += '<li><a href="#" aria-label="Next" onclick="nextPage()"><span aria-hidden="true">下一页</span></a></li>';
+                        $('#page').append(pagenation);
+                        //3. 调整数据计数
+                        $('#total').text(page.size);
+                    }else{
+                        alert(data.msg);
+                    }
+                }else{
+                    alert(data.msg);
+                }
+            },
+            error: function(e){
+                alert(e);
+            }
+        });
+    }
+
+    function nextPage(){
+        var next = parseInt($('.active').text()) || 0;
+        if(!Number.isInteger($('.active').next().text())){
+            return;
+        }
+        getListData(next)
+    }
+
+    function previousPage(){
+        var prev = parseInt($('.active').text()) - 1 || 0;
+        if(prev < 1){
+            return;
+        }
+        getListData(prev);
+    }
+
+    function jump(pageNum){
+        pageNum = pageNum || 0;
+        getListData(pageNum);
+    }
+
+    function editpage(id) {
+        location.href = "/quartz/task/edit/page?id=" + id;
+    }
+
+    function addNewTask() {
+        location.href = "/quartz/task/add/page/";
+    }
+
+    function startOrStop(taskNo) {
+        $.ajax({
+            url: "/quartz/list/pauseOrResume?taskNo=" + taskNo,
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                location.reload();
+            }
+        });
+    };
+
+    function runRightNow(taskNo) {
+        $.ajax({
+            url: "/quartz/runTask/rightNow?taskNo=" + taskNo,
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                if (result.code == 200) {
+
+                    alert(result.msg);
+                } else{
+                    alert(result.msg);
+                }
+
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

@@ -14,14 +14,14 @@ import lombok.EqualsAndHashCode;
 public class QuartzErrorTasks {
     private Long id;
 
-    private String taskexecuterecordid;
+    private String taskExecuteRecordId;
 
-    private String errorkey;
+    private String errorKey;
 
-    private Long createtime;
+    private Long createTime;
 
-    private Long lastmodifytime;
+    private Long lastModifyTime;
 
-    private String errorvalue;
+    private String errorValue;
 
 }

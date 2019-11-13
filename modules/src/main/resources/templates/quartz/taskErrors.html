@@ -6,7 +6,7 @@
     <!-- jquery -->
     <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/animate.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/font-awesome.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/mediaelementplayer.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/red.css}"/>
@@ -26,11 +26,11 @@
                     <table class="table table-striped table-bordered" width="100%" cellspacing="0"  style="text-align:center;vertical-align:middle;font-size: 16px;">
                         <tr>
                             <td style="text-align:center;vertical-align:middle;">errorKey</td>
-                            <td style="text-align:left;vertical-align:middle;" th:text="${taskErrors.errorkey}"/>
+                            <td style="text-align:left;vertical-align:middle;" th:text="${taskErrors.errorKey}"/>
                         </tr>
                         <tr>
                             <td style="text-align:center;vertical-align:middle;">errorValue</td>
-                            <td style="color: red;text-align:left;vertical-align:middle;" th:text="${taskErrors.errorvalue}"/>
+                            <td style="color: red;text-align:left;vertical-align:middle;" th:text="${taskErrors.errorValue}"/>
                         </tr>
                     </table>
                 </div>
@@ -41,16 +41,16 @@
 
 <script type="text/javascript" th:inline="javascript">
     function editpage(id) {
-        location.href = "/quartz/edit/taskpage?id=" + id;
+        location.href = "/quartz/edit/task/page?id=" + id;
     }
 
     function addNewTask() {
-        location.href = "/quartz/add/taskpage/";
+        location.href = "/quartz/add/task/";
     }
 
     function startOrStop(taskNo) {
         $.ajax({
-            url: "/quartz/list/optionjob?taskNo=" + taskNo,
+            url: "/quartz/list/optionJob?taskNo=" + taskNo,
             type: "GET",
             dataType: "json",
             success: function (result) {
@@ -70,7 +70,7 @@
 
     function runRightNow(taskNo) {
         $.ajax({
-            url: "/quartz/runtask/rightnow?taskno=" + taskNo,
+            url: "/quartz/runTask/rightNow?taskNo=" + taskNo,
             type: "GET",
             dataType: "json",
             success: function (result) {

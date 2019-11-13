@@ -1,6 +1,7 @@
 package com.common.utils;
 
 /***
+ * @author info
  * 通过枚举的方式返回结果
  */
 public enum Results {

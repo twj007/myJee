@@ -68,7 +68,7 @@ public class TreeUtils
     {
         List<Menu> returnList = new ArrayList<Menu>();
         //获取一级菜单
-        List<Menu> parentList = list.stream().filter(l -> l.getPId() == parentId).collect(Collectors.toList());
+        List<Menu> parentList = list.stream().filter(l -> l.getPId().equals(parentId)).collect(Collectors.toList());
         Iterator it = parentList.stream().iterator();
         while(it.hasNext()){
             Menu t = (Menu) it.next();
@@ -79,7 +79,7 @@ public class TreeUtils
     }
 
     private static void recursion(List<Menu> list, Menu t){
-        List<Menu> childList = list.stream().filter(p -> p.getPId() == t.getId()).collect(Collectors.toList());
+        List<Menu> childList = list.stream().filter(p -> p.getPId().equals(t.getId())).collect(Collectors.toList());
         t.setChild(childList);
         for(Menu m : childList){
             recursion(list, m);

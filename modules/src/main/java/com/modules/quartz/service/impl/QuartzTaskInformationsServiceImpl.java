@@ -7,8 +7,12 @@ import com.common.utils.ResultBody;
 import com.common.utils.Results;
 import com.modules.quartz.dao.QuartzTaskInformationsMapper;
 import com.modules.quartz.service.QuartzTaskInformationsService;
+import org.quartz.JobKey;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,12 +31,19 @@ public class QuartzTaskInformationsServiceImpl implements QuartzTaskInformations
     @Autowired
     private QuartzTaskInformationsMapper quartzTaskInformationsMapper;
 
+    @Autowired
+    private Scheduler scheduler;
+
+    @Autowired
+    private QuartzService quartzService;
+
     @Override
-    public ResultBody insert(QuartzTaskInformations quartzTaskInformations) {
-        String taskNo = quartzTaskInformations.getTaskno();
+    @Transactional(rollbackFor = Exception.class)
+    public ResultBody insert(QuartzTaskInformations quartzTaskInformations) throws SchedulerException {
+        String taskNo = quartzTaskInformations.getTaskNo();
         quartzTaskInformations.setVersion(0);
-        quartzTaskInformations.setCreatetime(System.currentTimeMillis());
-        quartzTaskInformations.setLastmodifytime(System.currentTimeMillis());
+        quartzTaskInformations.setCreateTime(System.currentTimeMillis());
+        quartzTaskInformations.setLastModifyTime(System.currentTimeMillis());
         Integer count = quartzTaskInformationsMapper.selectByTaskNo(taskNo);
         //判断是否重复任务编号
         if (count > 0) {
@@ -42,12 +53,16 @@ public class QuartzTaskInformationsServiceImpl implements QuartzTaskInformations
         if (insert < 1) {
             return Results.BAD__REQUEST.result(CommonConstants.FAIL, null);
         }
+        quartzService.schedule(quartzTaskInformations, scheduler);
         return Results.SUCCESS.result(CommonConstants.SUCCESS, null);
     }
 
     @Override
-    public List<QuartzTaskInformations> selectList() {
-        Map<String, Object> map = new HashMap<>();
+    public List<QuartzTaskInformations> selectList(String searchStr) {
+        Map<String, Object> map = new HashMap<>(16);
+        if(searchStr != null){
+            map.put("searchStr", searchStr);
+        }
         return quartzTaskInformationsMapper.selectList(map);
     }
 
@@ -57,26 +72,64 @@ public class QuartzTaskInformationsServiceImpl implements QuartzTaskInformations
     }
 
     @Override
-    public ResultBody updateTask(QuartzTaskInformations quartzTaskInformations) {
-        Integer count = quartzTaskInformationsMapper.selectByTaskNo(quartzTaskInformations.getTaskno());
+    @Transactional(rollbackFor = Exception.class)
+    public ResultBody updateTask(QuartzTaskInformations quartzTaskInformations){
+
+        Integer count = quartzTaskInformationsMapper.selectByTaskNo(quartzTaskInformations.getTaskNo());
         //判断是否重复任务编号
         if (count >= 2) {
             return Results.REPEAT_REQUEST.result("key is duplicate", null);
         }
         //设置解冻时间或冻结时间及最后修改时间
-        if (CommonConstants.FROZEN.equals(quartzTaskInformations.getFrozenstatus())) {
-            quartzTaskInformations.setFrozentime(System.currentTimeMillis());
-        } else if (CommonConstants.UNFROZEN.equals(quartzTaskInformations.getFrozenstatus())) {
-            quartzTaskInformations.setUnfrozentime(System.currentTimeMillis());
+        if (CommonConstants.FROZEN.equals(quartzTaskInformations.getFrozenStatus())) {
+            quartzTaskInformations.setFrozenTime(System.currentTimeMillis());
+        } else if (CommonConstants.UNFROZEN.equals(quartzTaskInformations.getFrozenStatus())) {
+            quartzTaskInformations.setUnfrozenTime(System.currentTimeMillis());
         }
-        quartzTaskInformations.setLastmodifytime(System.currentTimeMillis());
-        int updateCount = quartzTaskInformationsMapper.updateByPrimaryKeySelective(quartzTaskInformations);
+        quartzTaskInformations.setLastModifyTime(System.currentTimeMillis());
+        Long updateCount = quartzTaskInformationsMapper.updateByPrimaryKeySelective(quartzTaskInformations);
         //乐观锁控制并发修改
-        if (updateCount < 1) {
+        if (updateCount < 1L) {
             return Results.BAD__REQUEST.result(CommonConstants.FAIL, null);
         }
         return Results.SUCCESS.result(CommonConstants.SUCCESS, null);
     }
+
+    /***
+     * 在更新了规则以后，需要重新部署job
+     * @param quartzTaskInformations
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public ResultBody updateTaskNew(QuartzTaskInformations quartzTaskInformations) throws SchedulerException {
+        if(!scheduler.checkExists(JobKey.jobKey(quartzTaskInformations.getTaskNo(), Scheduler.DEFAULT_GROUP))){
+            return Results.BAD__REQUEST.result("job key not found", null);
+        }
+        //设置解冻时间或冻结时间及最后修改时间
+        if (CommonConstants.FROZEN.equals(quartzTaskInformations.getFrozenStatus())) {
+            quartzTaskInformations.setFrozenTime(System.currentTimeMillis());
+        } else if (CommonConstants.UNFROZEN.equals(quartzTaskInformations.getFrozenStatus())) {
+            quartzTaskInformations.setUnfrozenTime(System.currentTimeMillis());
+        }
+        quartzTaskInformations.setLastModifyTime(System.currentTimeMillis());
+        Long updateCount = quartzTaskInformationsMapper.updateByPrimaryKeySelective(quartzTaskInformations);
+        //乐观锁控制并发修改
+        if (updateCount < 1L) {
+            return Results.BAD__REQUEST.result(CommonConstants.FAIL, null);
+        }
+        if(scheduler.deleteJob(JobKey.jobKey(quartzTaskInformations.getTaskNo()))){
+            // 冻结了则不去重新部署job
+            if(!CommonConstants.FROZEN.equals(quartzTaskInformations.getFrozenStatus())){
+                quartzService.schedule(quartzTaskInformations, scheduler);
+            }
+            return Results.SUCCESS.result(CommonConstants.SUCCESS, null);
+        }else{
+            return Results.BAD__REQUEST.result("delete job failed", null);
+        }
+
+    }
+
 
     @Override
     public QuartzTaskInformations getTaskByTaskNo(String taskNo) {
@@ -84,7 +137,7 @@ public class QuartzTaskInformationsServiceImpl implements QuartzTaskInformations
     }
 
     @Override
-    public Integer updateStatusById(QuartzTaskInformations quartzTaskInformations) {
+    public Long updateStatusById(QuartzTaskInformations quartzTaskInformations) {
         return quartzTaskInformationsMapper.updateByPrimaryKeySelective(quartzTaskInformations);
     }
 
@@ -94,8 +147,10 @@ public class QuartzTaskInformationsServiceImpl implements QuartzTaskInformations
     }
 
     @Override
-    public Integer updateModifyTimeById(QuartzTaskInformations quartzTaskInformations) {
+    public Long updateModifyTimeById(QuartzTaskInformations quartzTaskInformations) {
         return quartzTaskInformationsMapper.updateByPrimaryKeySelective(quartzTaskInformations);
     }
+
+
 
 }

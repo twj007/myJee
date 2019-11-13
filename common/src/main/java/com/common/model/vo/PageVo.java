@@ -23,4 +23,6 @@ public class PageVo {
     private String groupBy;
     private List<?> data;
     private long size;
+    private Long pageNum;
+    private int currentPage;
 }
