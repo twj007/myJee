@@ -211,7 +211,11 @@
             type: "GET",
             dataType: "json",
             success: function (result) {
-                location.reload();
+                if(result.code == 200){
+                    location.reload();
+                }else{
+                    alert(result.msg);
+                }
             }
         });
     };

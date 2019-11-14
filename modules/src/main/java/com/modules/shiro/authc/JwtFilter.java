@@ -48,6 +48,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String token = httpServletRequest.getHeader(CommonConstants.X_ACCESS_TOKEN);
         if(token == null){
+            log.error("jwt的放开判断记得改回来");
             return true;
         }
         JwtToken jwtToken = new JwtToken(token);

@@ -66,9 +66,11 @@ public class EncryptUtils {
 
         String token = null;
         Calendar now = Calendar.getInstance();
-        Date iatDate = now.getTime(); //颁发时间
+        //颁发时间
+        Date iatDate = now.getTime();
         now.add(Calendar.MINUTE, 100);
-        Date expireDate = now.getTime();//过期时间（100分钟后过期）
+        //过期时间（100分钟后过期）
+        Date expireDate = now.getTime();
         try{
             Algorithm algorithm = Algorithm.HMAC256(CommonConstants.JWT_KEY);
             if(data instanceof String){
@@ -232,7 +234,7 @@ public class EncryptUtils {
     public static String getIssuer(String token){
         String jwtStr = null;
         if(token == null || "".equals(token)){
-            return jwtStr;
+            return null;
         }
         try {
             Algorithm algorithm = Algorithm.HMAC256(CommonConstants.JWT_KEY);
@@ -311,7 +313,7 @@ public class EncryptUtils {
      */
     private static byte[] AESEncrypt(byte[] content){
         byte[] keyBytes = CommonConstants.AES_KEY.getBytes();
-        //byte[] iv = CommonConstants.IV.getBytes();
+
         try {
             SecretKeySpec key = new SecretKeySpec(keyBytes, KEY_ALGORITHM);
             Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
@@ -332,7 +334,7 @@ public class EncryptUtils {
     private static byte[] AESDecrypt(byte[] content){
         try {
             byte[] keyBytes = CommonConstants.AES_KEY.getBytes();
-           // byte[] iv = CommonConstants.IV.getBytes();
+
             SecretKeySpec key = new SecretKeySpec(keyBytes, KEY_ALGORITHM);
             Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
             cipher.init(Cipher.DECRYPT_MODE,key);

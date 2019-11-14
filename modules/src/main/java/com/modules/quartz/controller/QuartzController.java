@@ -54,6 +54,9 @@ public class QuartzController {
     @Autowired
     private Scheduler scheduler;
 
+    private static final int CRYCLECOUNT = 10;
+
+
     @RequestMapping("/test")
     @ApiOperation("测试方法")
     public void test(){
@@ -218,11 +221,9 @@ public class QuartzController {
             return ResponseEntity.ok(result);
         } else {
             CronExpression expression = new CronExpression(cron);
-            DateTimeFormatter formatter =  DateTimeFormatter.ofLocalizedDateTime( FormatStyle.FULL )
-                    .withLocale( Locale.CHINA )
-                    .withZone( ZoneId.systemDefault());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss").withLocale( Locale.CHINA ).withZone( ZoneId.systemDefault());
             Date nowaDate = new Date();
-            for(int i = 0; i < 10; i++){
+            for(int i = 0; i < CRYCLECOUNT; i++){
                 nowaDate = expression.getNextValidTimeAfter(nowaDate);
                 result.add(formatter.format(nowaDate.toInstant()));
             }

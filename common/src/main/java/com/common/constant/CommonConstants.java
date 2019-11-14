@@ -86,4 +86,18 @@ public class CommonConstants {
     public static final String KAFKA = "kafka";
 
     public static final String REDIS = "redis";
+
+    /****
+     *   **********
+     *   **********
+     *   **
+     *   **
+     *   **********
+     *   **********
+     *   **
+     *   **
+     *   **********
+     *   **********  mail                                      */
+    public static final String FOUND_PASS_SUBJECT = "找回密码";
+
 }

@@ -43,7 +43,7 @@
                         <div class="form-group"><label class="col-sm-2 control-label text-right">任务名称:</label>
                             <div class="col-sm-10"><input type="text" th:value="${taskInformation.taskName}"
                                                           name="taskName" id="taskName"
-                                                          class="form-control"></div>
+                                                          class="form-control" readonly></div>
                         </div>
                         <br/> <br/>
                         <div class="form-group"><label class="col-sm-2 control-label text-right">定时配置规则:</label>
@@ -105,7 +105,7 @@
                         <div class="form-group"><label class="col-sm-2 control-label text-right">timeKey:</label>
                             <div class="col-sm-10"><input type="text" placeholder="(例如: yyyy-MM-dd HH:mm:ss)"
                                                           name="timeKey" th:value="${taskInformation.timeKey}"
-                                                          id="timeKey" class="form-control"></div>
+                                                          id="timeKey" class="form-control" readonly></div>
                         </div>
                         <br/> <br/><br/>
                         <input type="button" class="btn btn-3d btn-danger" align="left"
