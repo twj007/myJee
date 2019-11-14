@@ -1,6 +1,8 @@
 package com.modules.message.controller;
 
-import com.component.RabbitProducer;
+import com.common.model.vo.message.EmailEntity;
+import com.common.utils.ResultBody;
+import com.modules.message.service.IMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,10 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageController {
 
     @Autowired
-    private RabbitProducer rabbitProducer;
+    private IMessageService messageService;
+
 
     @RequestMapping("/test")
-    public void test(){
-        rabbitProducer.send("test msg");
+    public ResultBody test(){
+        EmailEntity entity = new EmailEntity();
+        entity.setReceiver("530747628@qq.com");
+        return messageService.sendPasswordEmail(entity);
     }
 }

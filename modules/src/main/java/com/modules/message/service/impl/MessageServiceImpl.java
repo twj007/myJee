@@ -43,7 +43,7 @@ public class MessageServiceImpl implements IMessageService {
                 @Override
                 public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
                     // 在redis中 用 sadd verify "6610" 为verify这个key添加随机数， 再通过 sRandMember 获取随机值
-                    return redisConnection.sRandMember(RANDOM_KEY.getBytes());
+                    return new String(redisConnection.sRandMember(RANDOM_KEY.getBytes()));
                 }
             }));
         emailEntity.setContent("<p>您的验证码为<strong>"+verifyCode+"</strong>, 请小心保管。5分钟内有效 </p>");
