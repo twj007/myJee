@@ -1,3 +1,10 @@
+function copyVal(){
+    // $("#cron").select();
+    // document.execCommand("copy");
+    window.parent.document.getElementById('schedulerRule').setAttribute('value', $('#cron').val());
+    window.parent.layer.close(window.parent.layer.index)
+
+}
 function everyTime(b) {
     var a = $("input[name=v_" + b.name + "]");
     a.val("*");
@@ -95,9 +102,13 @@ $(function() {
             success: function(res) {
 
                 var html = '最近10次运行时间: <br>';
-                res.forEach(function(d){
-                    html += d+'<br>';
-                });
+                if(res.msg){
+                    alert(res.msg);
+                }else{
+                    res.forEach(function(d){
+                        html += d+'<br>';
+                    });
+                }
                 $("#runTime").html(html);
             },
             error: function(e){

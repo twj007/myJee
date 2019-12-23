@@ -17,6 +17,7 @@ import io.swagger.annotations.ApiOperation;
 import org.activiti.bpmn.model.FlowNode;
 import org.activiti.bpmn.model.Process;
 import org.activiti.engine.history.HistoricActivityInstance;
+import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
@@ -275,5 +276,17 @@ public class WorkflowUserController extends BaseController{
         Task task = taskService.createTaskQuery().processInstanceId(eventId).taskAssignee(user).singleResult();
         taskService.setAssignee(task.getId(), userId);
         return Results.SUCCESS.result(CommonConstants.SUCCESS, null);
+    }
+
+    @GetMapping("/history")
+    @ApiOperation("获取历史流程")
+    public ResultBody history(int pageSize, int pageNum, HttpServletRequest request){
+
+        String token = request.getHeader(CommonConstants.X_ACCESS_TOKEN);
+        String user = EncryptUtils.getIssuer(token);
+        List<HistoricProcessInstance> list = historyService.createHistoricProcessInstanceQuery().startedBy(user).listPage(pageNum, pageSize);
+        List<HistoricInstanceVo> vos = new ArrayList(list.size());
+        BeanUtils.copyProperties(list, vos);
+        return Results.SUCCESS.result(CommonConstants.SUCCESS, vos);
     }
 }

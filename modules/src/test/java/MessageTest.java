@@ -1,10 +1,9 @@
-import com.JeeApplication;
 import com.component.RabbitProducer;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /***
  **@project: myJee
@@ -12,8 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  **@Author: twj
  **@Date: 2019/11/14
  **/
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = JeeApplication.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest(classes = JeeApplication.class)
 public class MessageTest {
 
     @Autowired
@@ -26,7 +25,19 @@ public class MessageTest {
             producer.send("[msg]");
             Thread.sleep(2000);
 
+    }
 
+    public static <R, S> boolean test1(Map<R, S> map){
+        map.forEach((k, v)->{
+            System.out.println(k);
+            System.out.println(v);
+        });
+        return true;
+    }
 
+    public static void main(String[] args) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("1", "1");
+        test1(map);
     }
 }

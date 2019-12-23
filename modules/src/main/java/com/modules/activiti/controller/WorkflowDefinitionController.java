@@ -217,7 +217,7 @@ public class WorkflowDefinitionController extends BaseController{
     @RequestMapping("/panel")
     @ApiOperation("流程图绘制页面")
     public ModelAndView panel(ModelAndView modelAndView){
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("bpmn");
         return modelAndView;
     }
 

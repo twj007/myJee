@@ -113,12 +113,12 @@ public class ShiroRealm extends AuthorizingRealm {
         }
 
         // 校验token是否超时失效 & 或者账号密码是否错误
-        if (!jwtTokenRefresh(token, username, sysUser.getPassword())) {
+        if (!jwtTokenRefresh(username, sysUser.getPassword())) {
             throw new AuthenticationException("Token失效，请重新登录!");
         }
 
         // 判断用户状态
-        if (!"1".equals(sysUser.getStatus())) {
+        if (!CommonConstants.NORMAL_USER.equals(sysUser.getStatus())) {
             throw new AuthenticationException("账号已被锁定,请联系管理员!");
         }
         BeanUtils.copyProperties(sysUser, loginUser);
@@ -140,7 +140,7 @@ public class ShiroRealm extends AuthorizingRealm {
      * @param password
      * @return
      */
-    public boolean jwtTokenRefresh(String token, String username, String password) {
+    public boolean jwtTokenRefresh(String username, String password) {
         String cacheToken = String.valueOf(redisTemplate.opsForValue().get(CommonConstants.PREFIX_USER_TOKEN + username));
         if (ConvertUtils.isNotEmpty(cacheToken)) {
             // 校验token有效性

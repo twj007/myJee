@@ -3,6 +3,7 @@ package com.modules.system.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 /***
  **@project: myJee
@@ -21,5 +22,12 @@ public class TestController {
       log.error("test log");
       return "ok";
     }
+
+    @RequestMapping("/table")
+    public ModelAndView table(ModelAndView modelAndView){
+        modelAndView.setViewName("/table");
+        return modelAndView;
+    }
+
 
 }

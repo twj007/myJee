@@ -34,6 +34,7 @@ public class BaseController {
 
 
 
+
     public String getUserByRequest(HttpServletRequest request){
         String token = request.getHeader(CommonConstants.X_ACCESS_TOKEN);
         if(token == null){

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>表格示例</title>
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/moment/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-locale-all.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-editable.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-editable.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-datetimepicker.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/select2/select2.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-toolbar.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/tableExport.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-export.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-sticky-header.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap.min.css}"/>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap-table-cell-input.min.css}"/>-->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap-table.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap-table-sticky-header.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap-editable.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/datetimepicker.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/select2-bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/select2/select2.css}"/>
+    <style>
+        .checkbox-custom {
+            position: relative;
+            padding: 0 15px 0 25px;
+            margin-bottom: 7px;
+            margin-top: 0;
+            display: inline-block;
+        }
+        /*
+        将初始的checkbox的样式改变
+        */
+        .checkbox-custom input[type="checkbox"] {
+            opacity: 0;/*将初始的checkbox隐藏起来*/
+            position: absolute;
+            cursor: pointer;
+            z-index: 2;
+            margin: -6px 0 0 0;
+            top: 50%;
+            left: 3px;
+        }
+        /*
+        设计新的checkbox，位置
+        */
+        .checkbox-custom label:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -9px;
+            width: 19px;
+            height: 18px;
+            display: inline-block;
+            border-radius: 2px;
+            border: 1px solid #bbb;
+            background: #fff;
+        }
+        /*
+        点击初始的checkbox，将新的checkbox关联起来
+        */
+        .checkbox-custom input[type="checkbox"]:checked +label:after {
+            position: absolute;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            content: "\e013";
+            font-size: 15px;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            color: #fff;
+            left: 1px;
+            background: #2196F3;
+        }
+        .checkbox-custom label {
+            cursor: pointer;
+            line-height: 1.2;
+            font-weight: normal;/*改变了rememberme的字体*/
+            margin-bottom: 0;
+            text-align: left;
+        }
+        a.editable-click, a.editable-click:hover{
+            border-bottom: 0;
+        }
+        .pagination>.active>a{
+            background-color: #00BCD4;
+            border-color: #00BCD4;
+        }
+        .dropdown-menu>.active>a{
+            background-color: #00BCD4;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="toolbar" class="row">
+        <form class="form-inline pull-left" style="margin-top: 10px;">
+            <div class="form-group" style="padding-left: 0px;">
+                <label class="sr-only" for="id">item name</label>
+                <div class="input-group">
+                    <div class="input-group-addon">item name</div>
+                    <input type="text" name="id" id="id" class="form-control" placeholder="请选择item name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="msg_type">消息类型</label>
+                <div class="input-group">
+                    <div class="input-group-addon">消息类型</div>
+                    <select class="form-control" name="msg_type" id="msgType">
+                        <option value="">请选择消息类型...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="startDate">开始时间</label>
+                <div class="input-group">
+                    <div class="input-group-addon">开始时间</div>
+                    <input type="text" class="form-control" name="startDate" id="startDate" placeholder="请选择开始时间..." readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <button id="query" type="button" class="btn btn-info">查询</button>
+            </div>
+        </form>
+        <div class="pull-right" style="margin:10px 0px 10px 5px">
+            <a title="添加" href="#">
+                <button type="button" class="btn btn-default" id="addData">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </a>
+            <a title="删除" href="#">
+                <button type="button" class="btn btn-default" id="deleteData">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button>
+            </a>
+        </div>
+        <table id="table" class="bootstrap-table table-hover table-striped"></table>
+    </div>
+
+
+</div>
+
+</body>
+<script type="text/javascript">
+    $(function(){
+        $('#table').bootstrapTable({
+            editable:true,//开启编辑模式
+            cache: false, // 缓存数据
+            locale: 'zh-CN',//国际化
+            showToggle: true, //显示切换按钮来切换表/卡片视图。
+            showPaginationSwitch: true, //显示分页切换按钮
+            pagination: true, // 开启分页
+            pageList: [5, 10,25,50,100],
+            pageSize: 5,  // 页大小
+            pageNumber: 1, // 页
+            uniqueId: 'index', //将index列设为唯一索引
+            striped: true,
+            search: false, // 查询
+            showRefresh: true, // 刷新按钮
+            minimumCountColumns: 2,
+            clickToSelect: true, //点选行
+            smartDisplay:true, // 智能显示分页
+            showExport: true, // 导出按钮
+            exportDataType: 'selected',//导出选择项
+            exportTypes: ['json','xml','png','csv','txt','sql','doc','excel','xlsx'],
+            stickyHeader: true, // 固定表头
+            virtualScroll: true, // 设置横向的滚动条
+            columns: [ [{
+                    field:"check",
+                    checkbox: true,
+                    title:"ID",
+                    align:"center",
+                    edit:false
+                }, {
+                    field: 'index',
+                    align: 'center',
+                    title: '序号',
+                    formatter: function(value, row, index){
+                        return index + 1;
+                    }
+                }, {
+                    field: 'name',
+                    class: 'name',
+                    title: 'Item Name',
+                    editable: {
+                        type: 'text', //text|textarea|select|date|checklist等
+                        emptytext: "空", // 空值时显示
+                        mode: "inline", // 显示模式 inline | popup
+                        showbuttons: false, // 显示按钮
+                        toggle: 'click', //触发方式 click|dblclick|mouseenter|manual
+                        validate: function(value){
+                            if($.trim(value) == ''){
+                                return "必填";
+                            }
+                        }
+                    }
+                }, {
+                    field: 'startDate',
+                    title: '开始时间',
+                    editable: {
+                        type: 'combodate',
+                        title: '开始时间',
+                        format: 'YYYY/MM/DD',
+                        emptytext: "空",
+                        mode: 'inline',
+                        placement: 'bottom',
+                        datepicker: { weekStart: 0, startView: 0, minViewMode: 0, autoclose: false },
+                        validate: function(value){
+                            if($.trim(value) == ''){
+                                return "必选";
+                            }
+                        }
+                    }
+                }, {
+                    field: 'hobby',
+                    title: '爱好',
+                    editable: {
+                        mode: 'inline',
+                        type: 'select2',
+                        title: '爱好',
+                        placement: 'bottom',
+                        source: [{ id: 'bsb', text: '篮球' },
+                            { id: 'ftb', text: '足球' },
+                            { id: 'wsm', text: '游泳' }],
+                        inputclass: 'input-large',
+                        emptytext: "空",
+                        select2: {
+                            allowClear: true,
+                            multiple: true,
+                            dropdownAutoWidth: true
+
+                        },
+                        validate: function(value){
+                            console.log(value);
+                            if(value.length == 0){
+                                return "必选";
+                            }
+                        }
+                    }
+                }, {
+                    field: 'textarea',
+                    title: '文本域',
+                    editable: {
+                        type: 'textarea',
+                        placement: 'bottom',
+                        emptytext: "空",
+                        onSelect: function(row, src){
+                            console.log(row, src);
+                        }
+                    },
+                    formatter: function(value, row, index){
+                        if(value.length > 5){
+                            return value.substr(0, 5) + '...';
+                        }else{
+                            return value;
+                        }
+                    }
+                }, {
+                    field: 'option',
+                    title: '选项',
+                    editable: {
+                        type: 'select',
+                        title: '部门',
+                        source:[{value:"1",text:"研发部"},{value:"2",text:"销售部"},{value:"3",text:"行政部"}],
+                        mode: "inline",
+                        emptytext: "空",
+                        showbuttons: false,
+                        onSelect: function(row, src){
+                            console.log(row, src);
+                        }
+                    }
+
+                }, {
+                    field: 'operation',
+                    title: '操作',
+                    formatter: function(value, row, index){
+                        console.log(value);
+                        console.log(JSON.stringify(row));
+                        if(row.id){
+                            return '<a href="#" onclick="update(\''+String(row.id)+'\', '+JSON.stringify(row).replace(/\"/g,"'")+')">修改</a>&nbsp;<a title="查看详情" href="#" onclick="update(\''+String(row.id)+'\'">详情</a>';
+                        }else{
+                            return '<a href="#" onclick="save(\''+String(index)+'\')">保存</a>&nbsp;';
+                        }
+
+                    }
+                }] ],
+            data: [{
+                id: 1,
+                name: 'Item 1',
+                startDate: new Date().toLocaleDateString(),
+                textarea: 'hahahah',
+                hobby: ['ftb'],
+                option: '1'
+            }, {
+                id: 2,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 3,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 4,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 5,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 6,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 7,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 8,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 9,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 21,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 22,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 23,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 24,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 25,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 26,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 27,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 28,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 29,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 30,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 31,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 32,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 33,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }, {
+                id: 34,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }],
+            onEditableSave: function(field, row, rowIndex, oldValue, el){
+                console.log(field);
+                console.log(row);
+                console.log(rowIndex);
+                console.log(oldValue);
+                console.log(el);
+            },
+            queryParams: function queryParams(params){
+                return {
+                    pageNum: params.pageNumber,
+                    pageSize: params.pageSize,
+                    sortName: params.sortName,
+                    sortOrder: params.sortOrder,
+                    searchText: $("#searchText").val(),
+                    msgType: $("#msgType").val(),
+                    productLine: $("#productLine").val()
+                };
+            },
+            onPostBody: function(data){
+                $('#table').find("input:checkbox").each(function (i) {
+                    var $check = $(this);
+                    if ($check.attr("id") && $check.next("label")) {
+                        return;
+                    }
+                    $check.next().remove();
+                    var name = $check.attr("name");
+                    var id = name + "-" + i;
+                    var $label = $('<label for="'+ id +'"></label>');
+                    $check.attr("id", id).parent().addClass("checkbox-custom").append($label);
+                });
+            },
+            onExportSaved: function(rows){
+                console.log(rows);
+                alert('success!');
+            }
+        });
+        $("#query").on('click', function(e){
+            console.log("do search");
+            $('#table').bootstrapTable('refresh');
+            var data = [{
+                id: 31,
+                name: 'Item 2',
+                startDate: new Date().toLocaleDateString(),
+                hobby: ['bsb', 'ftb'],
+                textarea: '',
+                option: '2'
+            }];
+            $('#table').bootstrapTable('load', data);
+            // ajax 请求返回数据重新渲染 通过$('#table').bootstrapTable('load', data); 将新数据加载到表格
+        });
+        $('button[name="refresh"]').on('click', function(e){
+            console.log("refresh")
+            $('#table').bootstrapTable('refresh');
+            // ajax 请求返回数据重新渲染
+        });
+        $("#addData").on('click', function(e){
+            console.log(e);
+            $('#table').bootstrapTable('selectPage', 1); //Jump to the first page
+            var data = {id: '', name: '', startDate:'', hobby: '', textarea: ''}; //define a new row data，certainly it's empty
+
+            $('#table').bootstrapTable('prepend', data); //the method of prepend must defined all fields，but append needn't
+            //$('#dataTable').bootstrapTable('append',data);
+
+        });
+        $('#deleteData').on('click', function(e){
+            var row = $('#table').bootstrapTable('getSelections');
+            console.log(row);
+            if(row.length == 0){
+                alert("请先选择行");
+                return;
+            }
+            // 先ajax 删除选择行
+            // 再删除行
+            var index = new Array();
+            row.forEach(function(v){
+                index.push(v.id);
+            });
+            var params = {
+                field: 'id',
+                values: index
+            }
+            $('#table').bootstrapTable('remove', params);
+        });
+        $("#startDate").datetimepicker({
+            format : 'yyyy-mm-dd',
+            minView : 'month',//day
+            autoclose : true,
+            clearBtn: true,
+            todayBtn : true,
+            language : 'cn',
+            todayBtn : 'linked',
+            pickerPosition : 'bottom-right',
+            initialDate : null
+        });
+    });
+    function update(index, row){
+        console.log(typeof row);
+        console.log(row);
+        var confirm = window.confirm("确认变更?");
+        if(confirm){
+            console.log("confirm");
+        }else{
+            console.log("no");
+            window.location.reload();
+        }
+        console.log(index);
+
+    }
+    function save(index, row){
+        console.log(index);
+    }
+</script>
+</html>

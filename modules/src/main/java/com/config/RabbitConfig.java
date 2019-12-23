@@ -41,15 +41,54 @@ public class RabbitConfig {
     public static final String EXCHANGE_FANOUT = "MQ-EXCHANGE_FANOUT";
     public static final String EXCHANGE_DEAD = "MQ-EXCHANGE-DEAD-10M";
     public static final String EXCHANGE_MAIL = "MQ-EXCHANGE-MAIL";
+    public static final String EXCHANGE_SOCKET = "MQ-EXCHANGE-A";
+    public static final String EXCHANGE_TOPIC = "MQ-EXCHANGE-TOPIC";
+    public static final String EXCHANGE_UN_READ = "MQ-EXCHANGE-UN-READ";
+    public static final String EXCHANGE_READ = "MQ-EXCHANGE-READ";
 
     public static final String QUEUE_FLASH = "QUEUE_FLASH";
     public static final String QUEUE_DELAY = "QUEUE_DELAY";
     public static final String QUEUE_DEAD = "QUEUE_DEAD";
     public static final String QUEUE_MAIL = "QUEUE_MAIL";
+    public static final String QUEUE_A = "QUEUE_A";
 
+    /**
+     * 实时消息队列
+     */
+    public static final String QUEUE_TOPIC = "QUEUE-TOPIC";
+    /***
+     * 未读消息队列
+     */
+    public static final String QUEUE_UN_READ = "QUEUE-UN-READ";
+    public static final String QUEUE_READ = "QUEUE-READ";
 
     public static final String ROUTING_KEY_DEAD_10M = "ROUTING-KEY-DELAY-10M";
     public static final String ROUTING_KEY_MAIL = "ROUTING_KEY_MAIL";
+    public static final String ROUTING_KEY_A = "51451";
+    public static final String ROUTING_KEY_UN_READ_1M = "ROUTING_KEY_UN_READ_1M";
+    public static final String ROUTING_KEY_READ = "ROUTING_KEY_READ";
+    /**
+     * topic 中匹配的路由key * 匹配一个 # 匹配 零个或一个
+     */
+    public static final String ROUTING_KEY_TOPIC = "order.#";
+    public static final String ROUTING_KEY_PUSH_MESSAGE = "message.topic.*";
+    public static final String ROUTING_KEY_PUSH_MESSAGE_PREFIX = "message.topic.";
+
+
+    @Bean("queueA")
+    Queue queueA(){
+        return new Queue(RabbitConfig.QUEUE_A);
+    }
+
+    @Bean("exchangeA")
+    DirectExchange exchange(){
+        return new DirectExchange(RabbitConfig.EXCHANGE_SOCKET);
+    }
+
+    @Bean
+    Binding bindingA(@Qualifier("queueA")Queue queue, @Qualifier("exchangeA")DirectExchange exchange){
+        return BindingBuilder.bind(queue).to(exchange).with(RabbitConfig.ROUTING_KEY_A);
+    }
 
 
     @Bean
@@ -162,5 +201,53 @@ public class RabbitConfig {
         return BindingBuilder.bind(queue).to(directExchange).with(RabbitConfig.ROUTING_KEY_MAIL);
     }
 
+    @Bean("queueTopic")
+    Queue queueWorker(){
+        Map args = new HashMap<>(16);
+        args.put("x-message-ttl", 1000 * 60);
+        args.put("x-dead-letter-exchange", RabbitConfig.EXCHANGE_UN_READ);
+        args.put("x-dead-letter-routing-key", RabbitConfig.ROUTING_KEY_UN_READ_1M);
+        return new Queue(RabbitConfig.QUEUE_TOPIC, true, false, false, args);
+    }
+
+    @Bean("topicExchange")
+    TopicExchange topicExchange(){
+        return new TopicExchange(RabbitConfig.EXCHANGE_TOPIC);
+    }
+
+    @Bean("topicBinding")
+    Binding topicBinding(@Qualifier("queueTopic")Queue queue, @Qualifier("topicExchange")TopicExchange topicExchange){
+        return BindingBuilder.bind(queue).to(topicExchange).with(RabbitConfig.ROUTING_KEY_PUSH_MESSAGE);
+    }
+
+    @Bean("unReadExchange")
+    FanoutExchange unReadExchange(){
+        return new FanoutExchange(RabbitConfig.EXCHANGE_UN_READ);
+    }
+
+    @Bean("unReadQueue")
+    Queue unReadQueue(){
+        return new Queue(RabbitConfig.QUEUE_UN_READ, true);
+    }
+
+    @Bean("unReadBinding")
+    Binding unReadbinding(@Qualifier("unReadQueue")Queue queue, @Qualifier("unReadExchange")FanoutExchange exchange){
+        return BindingBuilder.bind(queue).to(exchange);
+    }
+
+    @Bean("readExchange")
+    DirectExchange readExchange(){
+        return new DirectExchange(RabbitConfig.EXCHANGE_READ);
+    }
+
+    @Bean("readQueue")
+    Queue readQueue(){
+        return new Queue(RabbitConfig.QUEUE_READ);
+    }
+
+    @Bean("readBinding")
+    Binding readBinding(@Qualifier("readQueue")Queue queue, @Qualifier("readExchange")DirectExchange exchange){
+        return BindingBuilder.bind(queue).to(exchange).with(RabbitConfig.ROUTING_KEY_READ);
+    }
 
 }

@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 import com.component.DruidConfigProperties;
+import com.component.MyBatisInterceptor;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.logging.stdout.StdOutImpl;
@@ -164,7 +165,7 @@ public class MybatisConfig {
         configuration.setMapUnderscoreToCamelCase(true);
         bean.setConfiguration(configuration);
         // 分页插件拦截器配置
-        bean.setPlugins(new Interceptor[]{new PageInterceptor()});
+        bean.setPlugins(new Interceptor[]{new PageInterceptor(), new MyBatisInterceptor()});
         bean.setDataSource(dataSource);
         return bean.getObject();
     }

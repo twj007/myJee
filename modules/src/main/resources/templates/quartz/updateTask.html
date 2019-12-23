@@ -176,7 +176,18 @@
                     "unfrozenTime": unfrozenTime
                 },
                 success: function (result) {
-                    alert(result.msg);
+                    if(result.msg === "success"){
+                        alert(result.msg, function(){
+                            var href = window.location.href;
+                            var idx = href.match("/quartz")?href.match("/quartz").index:0;
+                            window.location.href = href.substr(0, idx) + '/quartz/task/list/page';
+                        });
+
+                    }else{
+                        alert(result.msg);
+                    }
+
+
                 }
             })
         });
