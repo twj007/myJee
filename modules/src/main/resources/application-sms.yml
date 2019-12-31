@@ -2,5 +2,5 @@ spring:
   mail:
     host: smtp.163.com
     username: 18779156726@163.com
-    password: jientank8316800
+    password:
     protocol: smtp
