@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>定时任务后台管理页面</title>
+    <!-- jquery -->
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+</head>
+<body>
+<div class="col-md-12 top-20 padding-0">
+
+</div>
+<script type="text/javascript" th:inline="javascript">
+
+    function connectSocket(){
+        var ws = new WebSocket('ws://127.0.0.1:8081/websocket/52155');
+        ws.onclose = function(e){
+            console.log("socket closed");
+        }
+        ws.onopen = function (ev) {
+            console.log("connect open");
+        }
+        ws.onmessage = function (ev) {
+            console.log(ev);
+            $('body').append("<p>"+ ev.data +"</p>")
+        }
+        ws.onerror = function (ev) {
+            console.error("socket error happened");
+        }
+
+    }
+    $(function(){
+        connectSocket();
+    });
+</script>
+</body>
+</html>

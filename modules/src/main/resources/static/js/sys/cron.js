@@ -1,9 +1,9 @@
 function copyVal(){
     // $("#cron").select();
     // document.execCommand("copy");
-    window.parent.document.getElementById('schedulerRule').setAttribute('value', $('#cron').val());
+    $('#schedulerRule', window.parent.document).val($('#cron').val());
+    // window.parent.document.getElementById('schedulerRule').setAttribute('value', $('#cron').val());
     window.parent.layer.close(window.parent.layer.index)
-
 }
 function everyTime(b) {
     var a = $("input[name=v_" + b.name + "]");

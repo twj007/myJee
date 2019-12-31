@@ -1,0 +1,673 @@
+2019-12-30 10:03:10.598 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:03:11.404 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:03:11.471 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:03:37.099 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:04:31.064 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:05:11.790 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:05:13.315 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:05:13.352 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:05:13.840 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:06:06.179 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:06:06.560 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:06:09.798 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:06:10.482 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:06:22.896 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:07:21.724 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:07:22.077 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:07:26.736 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 10:07:26.752 [http-nio-8081-exec-8] org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1136) [ERROR]: - [THYMELEAF][http-nio-8081-exec-8] Exception processing template "/quartz/v2/error": Error resolving template "/quartz/v2/error", template might not exist or might not be accessible by any of the configured Template Resolvers  
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template "/quartz/v2/error", template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:870)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:354)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:187)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1325)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1069)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:866)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:155)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:123)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:800)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:800)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1471)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-30 10:12:02.554 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 13:58:30.583 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 13:58:30.603 [http-nio-8081-exec-1] com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37) [ERROR]: - http-nio-8081-exec-1 [exception]: msg:null, cause: {}  
+java.lang.NullPointerException
+	at com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:404)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:139)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:78)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1255)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1062)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:866)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:155)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:123)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:800)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:800)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1471)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-30 14:05:28.268 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:05:29.033 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:05:39.847 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:05:40.113 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:05:45.206 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:05:45.216 [http-nio-8081-exec-7] com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37) [ERROR]: - http-nio-8081-exec-7 [exception]: msg:Request method 'POST' not supported, cause: {}  
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported
+	at com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:404)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:139)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:78)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1255)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1062)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:877)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:120)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:800)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:800)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1471)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-30 14:07:44.832 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:07:45.610 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:07:53.162 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:01.764 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:01.999 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:18.838 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:19.102 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:21.357 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:21.601 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:29.168 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:29.464 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:35.002 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:42.768 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:42.970 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:43.517 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:08:43.751 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:10:07.804 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:10:08.015 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:10:23.488 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:10:23.791 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:10:52.005 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:10:52.301 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:10:57.628 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:11:04.665 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:11:04.885 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:11:05.260 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:11:05.458 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:11:15.929 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:12:38.115 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:12:38.290 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:12:50.827 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:12:51.137 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:13:25.922 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:23:30.065 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:23:30.342 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:23:30.400 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:23:33.044 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:23:40.731 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:23:40.858 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:26:20.926 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:26:21.118 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:26:27.427 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:27:08.614 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:27:08.832 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:27:12.595 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:28:27.194 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:28:27.508 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:28:37.797 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:36:24.475 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:36:24.731 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:38:15.871 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:38:16.635 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:41:35.252 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:41:35.484 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:42:10.619 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:42:11.007 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:42:15.526 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:42:29.690 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:42:56.081 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:42:56.328 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:42:57.698 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:42:57.941 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:45:17.609 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:45:17.884 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:45:22.212 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:45:53.692 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:47:05.426 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:47:15.554 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:47:22.621 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:48:12.109 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:49:53.273 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:49:58.597 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 14:50:06.151 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:00:55.434 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:01:13.165 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:01:13.165 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:01:13.176 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:01:13.177 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:01:13.176 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:01:13.184 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:01:13.498 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:01:20.270 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:10.180 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:10.474 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:16.204 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:19.679 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:19.926 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:20.531 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:20.720 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:21.393 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:21.577 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:03:35.173 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:04:55.939 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:04:56.372 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:04:56.597 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:04:57.035 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:04:57.645 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:05:02.368 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:05:02.637 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:05:16.692 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:06:50.256 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:06:54.440 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:07:01.227 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:07:26.209 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:07:33.734 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:07:35.807 [http-nio-8081-exec-7] com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37) [ERROR]: - http-nio-8081-exec-7 [exception]: msg:Unable to store Job : 'DEFAULT.test', because one already exists with this identification., cause: {}  
+org.quartz.ObjectAlreadyExistsException: Unable to store Job : 'DEFAULT.test', because one already exists with this identification.
+	at com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:404)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:139)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:78)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1255)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1062)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:877)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:155)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:123)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:800)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:800)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1471)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-30 15:08:53.924 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:08:56.260 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:08:58.301 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:08:58.492 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:09:01.508 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:09:12.051 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:12:33.613 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:12:33.875 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:12:42.397 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:12:50.715 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:17:23.898 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:17:24.835 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:17:37.419 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:17:43.752 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:21:23.627 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:21:24.507 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:21:35.671 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:21:40.628 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:25:51.963 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:25:52.840 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:25:55.862 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:26:04.415 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:26:14.094 [http-nio-8081-exec-5] com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37) [ERROR]: - http-nio-8081-exec-5 [exception]: msg:getWriter() has already been called for this response, cause: {}  
+java.lang.IllegalStateException: getWriter() has already been called for this response
+	at com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:404)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:139)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:78)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1255)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1062)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:877)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:155)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:123)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:800)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:800)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1471)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-30 15:26:14.140 [http-nio-8081-exec-5] com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37) [ERROR]: - http-nio-8081-exec-5 [exception]: msg:getWriter() has already been called for this response, cause: {}  
+java.lang.IllegalStateException: getWriter() has already been called for this response
+	at com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:404)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:139)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:78)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1255)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1062)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1008)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:877)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.doInclude(ApplicationDispatcher.java:591)
+	at org.apache.catalina.core.ApplicationDispatcher.include(ApplicationDispatcher.java:527)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:389)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:800)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:800)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1471)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-30 15:29:00.908 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:29:01.739 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:29:04.733 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:29:09.255 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:50:40.206 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:50:40.525 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:50:41.861 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:50:42.070 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:50:43.631 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:50:43.795 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:50:44.459 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:50:44.667 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:51:30.738 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:51:30.973 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:51:32.048 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:51:32.402 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:53:52.934 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:53:53.235 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:53:54.532 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:06.987 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:08.198 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:08.389 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:09.247 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:30.483 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:32.058 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:32.166 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:32.590 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:33.045 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:33.392 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:33.403 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:33.725 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:33.745 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:33.815 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:34.055 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:35.243 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:35.501 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:54:35.601 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:55:44.941 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:55:45.372 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:00.820 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:00.826 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:01.060 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:02.981 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:04.822 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:12.921 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:17.258 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:17.543 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:22.764 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:22.847 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:25.287 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:25.575 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:56:26.951 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:58:11.570 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:58:12.047 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:58:16.754 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:58:17.195 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 15:58:18.293 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:00:00.047 [quartzScheduler_Worker-1] com.modules.quartz.service.impl.QuartzServiceV2Impl.addExecuteRecord(QuartzServiceV2Impl.java:175) [ERROR]: - 保存运行时间失败  
+2019-12-30 16:00:00.050 [quartzScheduler_Worker-1] com.component.ManageableJob.execute(ManageableJob.java:52) [ERROR]: - [execute jon] exception when execute: com.modules.quartz.service.impl.QuartzServiceV2Impl.addExecuteRecord(QuartzServiceV2Impl.java:176)  
+2019-12-30 16:00:00.057 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:00:00.061 [quartzScheduler_Worker-1] org.quartz.core.JobRunShell.run(JobRunShell.java:211) [ERROR]: - Job DEFAULT.test threw an unhandled Exception:   
+java.lang.NullPointerException
+	at com.component.ManageableJob.execute(ManageableJob.java:78)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+2019-12-30 16:00:00.063 [quartzScheduler_Worker-1] org.quartz.core.ErrorLogger.schedulerError(QuartzScheduler.java:2401) [ERROR]: - Job (DEFAULT.test threw an exception.  
+org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: java.lang.NullPointerException]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.NullPointerException
+	at com.component.ManageableJob.execute(ManageableJob.java:78)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+2019-12-30 16:25:55.289 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:25:56.218 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:25:57.657 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:25:57.941 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:26:08.064 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:26:10.088 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:26:10.330 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:26:16.194 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:26:16.389 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:26:17.769 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:26:17.976 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:26:19.339 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:27:42.232 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:27:42.639 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:27:46.145 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:27:51.834 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:27:52.021 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:27:53.167 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:27:53.386 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:28:04.703 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:28:10.335 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:28:10.623 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:28:14.173 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:28:14.256 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:33:53.079 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:33:53.342 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:38:44.803 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:38:45.037 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:38:46.996 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:38:47.205 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:38:47.920 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:38:48.118 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:38:51.965 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:38:57.011 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:39:59.280 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:39:59.561 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-12-30 16:40:02.077 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  

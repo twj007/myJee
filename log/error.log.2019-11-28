@@ -1,0 +1,8 @@
+2019-11-28 09:22:09.579 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-28 09:22:12.539 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-28 09:23:21.751 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-28 09:23:27.559 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-28 10:35:48.371 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-28 10:37:34.276 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-28 10:58:29.584 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-28 10:59:19.239 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  

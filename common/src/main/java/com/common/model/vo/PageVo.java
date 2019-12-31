@@ -21,8 +21,8 @@ public class PageVo {
     private static final String DEFAULT_ORDER = "asc";
     private String order;
     private String groupBy;
-    private List<?> data;
-    private long size;
+    private List<?> rows;
+    private long total;
     private Long pageNum;
     private int currentPage;
 }

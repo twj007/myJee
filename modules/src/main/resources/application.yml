@@ -18,3 +18,19 @@ spring:
     cache: false
 
 
+swagger:
+  enable: true
+
+zimuzu:
+  token_url: http://a.zmzapi.com/index.php?g=api/public&m=v2&accesskey=519f9cab85c8059d17544947k361a827&client=2&a=login
+  username: jien007
+  password: jien007
+  activity_url: http://h5.rrhuodong.com/index.php?g=api/mission&m=index&a=login
+  login_url: http://h5.rrhuodong.com/index.php?g=api/mission&m=clock&a=store&id=2
+  info_url: http://h5.rrhuodong.com/index.php?g=api/mission&m=index&a=user_info
+  python_position: ${zimuzu.dev.python_position}
+  prd:
+    python_position: C://Users/info/Documents/myJee/modules/src/main/resources/zimuzu.py
+  dev:
+    python_position: C://Users/info/Documents/myJee/modules/src/main/resources/zimuzu.py
+

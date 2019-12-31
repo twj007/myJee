@@ -1,6 +1,7 @@
 package com.modules.system.service.impl;
 
 import com.common.annotation.DataSource;
+import com.common.model.vo.system.LoginUser;
 import com.common.model.vo.system.SysUser;
 import com.modules.system.dao.SysUserDao;
 import com.modules.system.service.ISysUserService;
@@ -43,5 +44,10 @@ public class SysUserService implements ISysUserService {
     @Override
     public List<SysUser> findUserByRole(String taskId) {
         return sysUserDao.findUserByRole(taskId);
+    }
+
+    @Override
+    public LoginUser login(LoginUser user) {
+        return null;
     }
 }

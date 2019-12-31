@@ -70,7 +70,7 @@ public class QuartzService implements InitializingBean {
     /**
      * 新增定时任务
      *
-     * @param quartzTaskInformations
+     * @param
      * @return
      */
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
@@ -111,7 +111,7 @@ public class QuartzService implements InitializingBean {
         long currentTimeMillis = System.currentTimeMillis();
         QuartzTaskInformations task = new QuartzTaskInformations();
         task.setId(quartzTaskInformation.getId());
-        task.setTaskNo(quartzTaskInformation.getTaskNo());
+        task.setTaskNo(taskNo);
         task.setVersion(quartzTaskInformation.getVersion());
         //说明要暂停
         if (CommonConstants.UNFROZEN.toLowerCase().equals(status.toLowerCase())) {
@@ -329,7 +329,8 @@ public class QuartzService implements InitializingBean {
 
         //更新taskinfo表的最后修改时间
         QuartzTaskInformations quartzTaskInformation = new QuartzTaskInformations();
-        quartzTaskInformation.setId(id);
+        quartzTaskInformation.setTaskNo(records.getTaskNo());
+        quartzTaskInformation.setId(records.getId());
         quartzTaskInformation.setLastModifyTime(System.currentTimeMillis());
         this.updateTask(quartzTaskInformation);
         return Results.SUCCESS.result(CommonConstants.SUCCESS, null);

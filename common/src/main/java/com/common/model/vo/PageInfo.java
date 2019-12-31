@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 /***
  **@project: myJee
  **@description:
@@ -15,7 +17,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ToString
-public class PageInfo {
+public class PageInfo implements Serializable {
     private static final String DEFAULT_ORDER = "asc";
     private int pageSize;
     private int pageNum;

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>执行记录</title>
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/moment/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/layer/layer.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-locale-all.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-toolbar.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-sticky-header.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap-table.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap-table-sticky-header.min.css}"/>
+</head>
+<body>
+<div class="container">
+    <div id="toolbar" class="row">
+        <form class="form-inline pull-left" style="margin-top: 10px;">
+
+            <input type="hidden" id="taskNo" th:value="${taskNo}">
+
+            <div class="form-group">
+                <label class="sr-only" for="taskstatus">执行状态</label>
+                <div class="input-group">
+                    <div class="input-group-addon">执行状态</div>
+                    <select class="form-control" name="taskstatus" id="taskstatus">
+                        <option></option>
+                        <option value="success">成功</option>
+                        <option value="fail" style="color: red;">失败</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button id="query" type="button" class="btn btn-info">查询</button>
+            </div>
+        </form>
+        <table id="table" class="bootstrap-table table-hover table-striped"></table>
+    </div>
+
+
+</div>
+
+</body>
+<script type="text/javascript">
+    $(function(){
+        if($('#taskNo').val()){
+            $('#table').bootstrapTable({
+                url: '../list/record',
+                cache: false, // 缓存数据
+                locale: 'zh-CN',//国际化
+                showToggle: true, //显示切换按钮来切换表/卡片视图。
+                showPaginationSwitch: false, //显示分页切换按钮
+                sidePagination: 'server',
+                pagination: true, // 开启分页
+                pageList: [5, 10,25,50,100],
+                pageSize: 5,  // 页大小
+                pageNumber: 1, // 页
+                uniqueId: 'index', //将index列设为唯一索引
+                striped: true,
+                search: false, // 查询
+                showRefresh: true, // 刷新按钮
+                minimumCountColumns: 2,
+                clickToSelect: true, //点选行
+                smartDisplay:true, // 智能显示分页
+                stickyHeader: true, // 固定表头
+                virtualScroll: true, // 设置横向的滚动条
+                columns: [ [{
+                    field: 'index',
+                    align: 'center',
+                    title: '序号',
+                    formatter: function(value, row, index){
+                        return index + 1;
+                    }
+                }, {
+                    field: 'taskno',
+                    class: 'name',
+                    title: '任务编号'
+                }, {
+                    field: 'timekeyvalue',
+                    title: 'time key'
+                }, {
+                    field: 'executetime',
+                    title: '执行时间',
+                    formatter: function(val, row, index){
+                        return val ? new Date(val).toLocaleString() : "空";
+                    }
+                }, {
+                    field: 'taskstatus',
+                    title: '执行状态',
+                    formatter: function(value, row, index){
+                        if(value === "success"){
+                            return "成功";
+                        }
+                        else if(value === "fail"){
+                            return "<font color='red'>失败</font>";
+                        }
+                        else{
+                            return "<font color='red'>异常</font>";
+                        }
+                    }
+                }, {
+                    field: 'failcount',
+                    title: '失败总数'
+                }, {
+                    field: 'failreason',
+                    title: '失败原因'
+                }, {
+                    field: 'createtime',
+                    title: '创建时间',
+                    formatter: function(val, row, index){
+                        return val ? new Date(val).toLocaleString() : "空";
+                    }
+                }, {
+                    field: 'lastmodifytime',
+                    title: '最后修改时间',
+                    formatter: function(val){
+                        return val ? new Date(val).toLocaleString() : "空";
+                    }
+                }] ],
+                queryParams: function queryParams(params){
+                    console.log(params);
+                    var queryParam = {
+                        pageNum: params.offset / params.limit + 1,
+                        pageSize: params.limit,
+                        sortName: params.sort,
+                        sortOrder: params.order
+                    }
+                    var taskno = $('#taskNo').val();
+                    var taskstatus = $('#taskstatus').val();
+                    if(taskno){
+                        queryParam.taskno = taskno;
+                    }
+                    if(taskstatus){
+                        queryParam.taskstatus = taskstatus;
+                    }
+                    return queryParam;
+                },
+                responseHandler: function(res){
+                    return res.body;
+                }
+            });
+            $("#query").on('click', function(e){
+                var options = $('#table').bootstrapTable('getOptions');
+                options.params = function(params){
+
+                    return {
+                        pageNum: params.offset / params.limit + 1,
+                        pageSize: params.limit,
+                        sortName: params.sort,
+                        sortOrder: params.order
+                    }
+                    var taskno = $('#taskNo').val();
+                    var taskstatus = $('#taskstatus').val();
+                    if(taskno){
+                        params.taskno = taskno;
+                    }
+                    if(taskstatus){
+                        params.taskstatus = taskstatus;
+                    }
+                    return params;
+                }
+                $('#table').bootstrapTable('refresh', options);
+            });
+            $('button[name="refresh"]').on('click', function(e){
+                console.log("refresh")
+                $('#table').bootstrapTable('refresh');
+                // ajax 请求返回数据重新渲染
+            });
+            window.onkeyup = function(e){
+                if(e.keyCode == 13){
+                    $('#query').click();
+                }
+            };
+        }
+    });
+
+</script>
+</html>

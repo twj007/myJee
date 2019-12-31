@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>定时任务</title>
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/moment/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/layer/layer.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-locale-all.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-toolbar.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/bootstrap-table-sticky-header.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap-table.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap-table-sticky-header.min.css}"/>
+    <style>
+        .checkbox-custom {
+            position: relative;
+            padding: 0 15px 0 25px;
+            margin-bottom: 7px;
+            margin-top: 0;
+            display: inline-block;
+        }
+        /*
+        将初始的checkbox的样式改变
+        */
+        .checkbox-custom input[type="checkbox"] {
+            opacity: 0;/*将初始的checkbox隐藏起来*/
+            position: absolute;
+            cursor: pointer;
+            z-index: 2;
+            margin: -6px 0 0 0;
+            top: 50%;
+            left: 3px;
+        }
+        /*
+        设计新的checkbox，位置
+        */
+        .checkbox-custom label:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -9px;
+            width: 19px;
+            height: 18px;
+            display: inline-block;
+            border-radius: 2px;
+            border: 1px solid #bbb;
+            background: #fff;
+        }
+        /*
+        点击初始的checkbox，将新的checkbox关联起来
+        */
+        .checkbox-custom input[type="checkbox"]:checked +label:after {
+            position: absolute;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            content: "\e013";
+            font-size: 15px;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            color: #fff;
+            left: 1px;
+            background: #2196F3;
+        }
+        .checkbox-custom label {
+            cursor: pointer;
+            line-height: 1.2;
+            font-weight: normal;/*改变了rememberme的字体*/
+            margin-bottom: 0;
+            text-align: left;
+        }
+        a.editable-click, a.editable-click:hover{
+            border-bottom: 0;
+        }
+        .pagination>.active>a{
+            background-color: #00BCD4;
+            border-color: #00BCD4;
+        }
+        .dropdown-menu>.active>a{
+            background-color: #00BCD4;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="toolbar" class="row">
+        <form class="form-inline pull-left" style="margin-top: 10px;">
+            <div class="form-group" style="padding-left: 0px;">
+                <label class="sr-only" for="taskno">任务名称</label>
+                <div class="input-group">
+                    <div class="input-group-addon">任务名称</div>
+                    <input type="text" name="taskno" id="taskno" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="frozenstatus">执行状态</label>
+                <div class="input-group">
+                    <div class="input-group-addon">执行状态</div>
+                    <select class="form-control" name="frozenstatus" id="frozenstatus">
+                        <option></option>
+                        <option value="FROZEN">冻结</option>
+                        <option value="UNFROZEN">正常</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="executorno">执行方</label>
+                <div class="input-group">
+                    <div class="input-group-addon">执行方</div>
+                    <input type="text" class="form-control" name="executorno" id="executorno">
+                </div>
+            </div>
+            <div class="form-group">
+                <button id="query" type="button" class="btn btn-info">查询</button>
+            </div>
+        </form>
+        <div class="pull-right" style="margin:10px 0px 10px 5px">
+            <a title="添加" href="#">
+                <button type="button" class="btn btn-default" id="addData" onclick="addTask()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </a>
+        </div>
+        <table id="table" class="bootstrap-table table-hover table-striped"></table>
+    </div>
+
+
+</div>
+
+</body>
+<script type="text/javascript">
+    $(function(){
+
+        $('#table').bootstrapTable({
+            url: '../list/task',
+            cache: false, // 缓存数据
+            locale: 'zh-CN',//国际化
+            showToggle: true, //显示切换按钮来切换表/卡片视图。
+            showPaginationSwitch: false, //显示分页切换按钮
+            sidePagination: 'server',
+            pagination: true, // 开启分页
+            pageList: [5, 10,25,50,100],
+            pageSize: 5,  // 页大小
+            pageNumber: 1, // 页
+            uniqueId: 'index', //将index列设为唯一索引
+            striped: true,
+            search: false, // 查询
+            showRefresh: true, // 刷新按钮
+            minimumCountColumns: 2,
+            clickToSelect: true, //点选行
+            smartDisplay:true, // 智能显示分页
+            stickyHeader: true, // 固定表头
+            virtualScroll: true, // 设置横向的滚动条
+            columns: [ [{
+                field:"check",
+                checkbox: true,
+                title:"ID",
+                align:"center"
+            }, {
+                field: 'index',
+                align: 'center',
+                title: '序号',
+                formatter: function(value, row, index){
+                    return index + 1;
+                }
+            }, {
+                field: 'taskno',
+                class: 'name',
+                title: '任务编号',
+                formatter: function(val, row, index){
+                    return '<a href="#" onclick="record(\''+val+'\')"><font color="blue">'+val+'</font></a>'
+                }
+            }, {
+                field: 'taskname',
+                title: '任务名称'
+            }, {
+                field: 'schedulerrule',
+                title: '定时表达式cron'
+            }, {
+                field: 'frozenstatus',
+                title: '执行状态',
+                formatter: function(value, row, index){
+                    if(value === "FROZEN"){
+                        return "<font color='red'>冻结</font>";
+                    }
+                    else if(value === "UNFROZEN"){
+                        return "<font color='green'>正常</font>";
+                    }
+                    else{
+                        return "<font color='red'>异常</font>";
+                    }
+                }
+            }, {
+                field: 'executorno',
+                title: '执行方'
+            }, {
+                field: 'sendtype',
+                title: '执行方式'
+            }, {
+                field: 'createtime',
+                title: '创建时间',
+                formatter: function(val){
+                    return val ? new Date(val).toLocaleString() : "空";
+                }
+            }, {
+                field: 'lastmodifytime',
+                title: '最后修改时间',
+                formatter: function(val){
+                    return val ? new Date(val).toLocaleString() : "空";
+                }
+            }, {
+                field: 'op',
+                title: '操作',
+                formatter: function(val, row, index){
+                    console.log(row);
+                    var html = '';
+                    if(row.frozenstatus === 'FROZEN'){
+                        html += '<a href="#" onclick="update(\''+String("UNFROZEN")+'\', '+JSON.stringify(row).replace(/\"/g,"'")+')">启动</a>&nbsp';
+                    }
+                    if(row.frozenstatus === 'UNFROZEN'){
+                        html += '<a href="#" onclick="update(\''+String("FROZEN")+'\', '+JSON.stringify(row).replace(/\"/g,"'")+')">停用</a>&nbsp;'
+                    }
+                    html += '<a href="#" onclick="runRightNow('+JSON.stringify(row).replace(/\"/g,"'")+')">立刻运行一次</a>&nbsp;<a href="#" onclick="update(\''+String("UPDATE")+'\', '+JSON.stringify(row).replace(/\"/g,"'")+')">修改</a>&nbsp;';
+                    return html;
+                }
+
+            }] ],
+            queryParams: function queryParams(params){
+
+                var queryParam = {
+                    pageNum: params.offset / params.limit + 1,
+                    pageSize: params.limit,
+                    sortName: params.sort,
+                    sortOrder: params.order
+                }
+                var taskno = $('#taskno').val();
+                var frozenstatus = $('#frozenstatus').val();
+                var executorno = $('#executorno').val();
+                if(taskno){
+                    queryParam.taskno = taskno;
+                }
+                if(frozenstatus){
+                    queryParam.frozenstatus = frozenstatus;
+                }
+                if(executorno){
+                    queryParam.executorno = executorno;
+                }
+                return queryParam;
+            },
+            onPostBody: function(data){
+                $('#table').find("input:checkbox").each(function (i) {
+                    var $check = $(this);
+                    if ($check.attr("id") && $check.next("label")) {
+                        return;
+                    }
+                    $check.next().remove();
+                    var name = $check.attr("name");
+                    var id = name + "-" + i;
+                    var $label = $('<label for="'+ id +'"></label>');
+                    $check.attr("id", id).parent().addClass("checkbox-custom").append($label);
+                });
+            },
+            responseHandler: function(res){
+                console.log(res);
+                return res.body;
+            }
+        });
+        $("#query").on('click', function(e){
+           var options = $('#table').bootstrapTable('getOptions');
+           options.params = function(params){
+               return {
+                   pageNum: params.offset / params.limit + 1,
+                   pageSize: params.limit,
+                   sortName: params.sort,
+                   sortOrder: params.order
+               }
+               var taskno = $('#taskno').val();
+               var frozenstatus = $('#frozenstatus').val();
+               var executorno = $('#executorno').val();
+               if(taskno){
+                   queryParam.taskno = taskno;
+               }
+               if(sendtype){
+                   queryParam.frozenstatus = frozenstatus;
+               }
+               if(executorno){
+                   queryParam.executorno = executorno;
+               }
+               return params;
+           }
+           $('#table').bootstrapTable('refresh', options);
+        });
+        $('button[name="refresh"]').on('click', function(e){
+            console.log("refresh")
+            $('#table').bootstrapTable('refresh');
+            // ajax 请求返回数据重新渲染
+        });
+        window.onkeyup = function(e){
+            if(e.keyCode == 13){
+                $('#query').click();
+            }
+        };
+    });
+    function update(type, row){
+        switch (type) {
+            case "FROZEN":
+                $.ajax({
+                    url: '../changeStatus',
+                    data: {
+                        id: row.id,
+                        frozenstatus: type,
+                        frozentime: new Date().getTime()
+                    },
+                    success: function(res){
+                        if(res.msg == "success"){
+                            console.log("success");
+                            window.location.reload();
+                        }else{
+                            alert(res.msg);
+                        }
+                    },
+                    error: function(e){
+                        console.error(e);
+                    }
+                });
+                break;
+            case "UNFROZEN":
+                $.ajax({
+                    url: '../changeStatus',
+                    data: {
+                        id: row.id,
+                        frozenstatus: type,
+                        unfrozentime: new Date().getTime()
+                    },
+                    success: function(res){
+                        if(res.msg == "success"){
+                            console.log("success");
+                            window.location.reload();
+                        }else{
+                            alert(res.msg);
+                        }
+                    },
+                    error: function(e){
+                        console.error(e);
+                    }
+                });
+                break;
+            case "UPDATE":
+                window.location.href = '../page/update?id='+row.id;
+                break;
+            default:
+                console.error("error kind of command");
+                break;
+        }
+    }
+    function runRightNow(row){
+        $.ajax({
+            url: '../runRightNow',
+            data: {
+                id: row.id,
+                taskno: row.taskno
+            },
+            success: function(data){
+                console.log(data);
+                alert(data.msg);
+            },
+            error: function(e){
+                console.error(e);
+            }
+        });
+    }
+
+    function record(taskNo){
+        layer.open({
+            type: 2,
+            area: ['100%', '100%'],
+            fixed: true, //不固定
+            maxmin: true,
+            content: '../page/record?taskNo='+taskNo
+        });
+    }
+    function addTask(){
+        layer.open({
+            type: 2,
+            area: ['100%', '100%'],
+            fixed: true,
+            maxmin: true,
+            content: '../page/add'
+        });
+    }
+</script>
+</html>

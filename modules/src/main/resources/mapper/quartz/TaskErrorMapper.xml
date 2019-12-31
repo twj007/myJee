@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.modules.mybatis.dao.TaskErrorMapper" >
+  <resultMap id="BaseResultMap" type="com.modules.mybatis.modal.TaskError" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="taskExecuteRecordId" property="taskexecuterecordid" jdbcType="VARCHAR" />
+    <result column="errorKey" property="errorkey" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="BIGINT" />
+    <result column="lastModifyTime" property="lastmodifytime" jdbcType="BIGINT" />
+    <result column="errorValue" property="errorvalue" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from quartz_task_errors
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.modules.mybatis.modal.TaskError" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into quartz_task_errors (id, taskExecuteRecordId, errorKey, 
+      createTime, lastModifyTime, errorValue
+      )
+    values (#{id,jdbcType=BIGINT}, #{taskexecuterecordid,jdbcType=VARCHAR}, #{errorkey,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=BIGINT}, #{lastmodifytime,jdbcType=BIGINT}, #{errorvalue,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.modules.mybatis.modal.TaskError" >
+    update quartz_task_errors
+    set taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR},
+      errorKey = #{errorkey,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=BIGINT},
+      lastModifyTime = #{lastmodifytime,jdbcType=BIGINT},
+      errorValue = #{errorvalue,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, taskExecuteRecordId, errorKey, createTime, lastModifyTime, errorValue
+    from quartz_task_errors
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, taskExecuteRecordId, errorKey, createTime, lastModifyTime, errorValue
+    from quartz_task_errors
+  </select>
+  <select id="list" resultMap="BaseResultMap" parameterType="com.modules.mybatis.modal.TaskError">
+    select * from quartz_task_errors
+    <where>
+      <if test="taskno != null">
+        taskNo = #{taskno}
+      </if>
+    </where>
+  </select>
+</mapper>

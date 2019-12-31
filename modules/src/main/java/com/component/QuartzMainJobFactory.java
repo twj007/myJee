@@ -7,7 +7,6 @@ import com.common.utils.SpringBeanFactoryUtils;
 import com.modules.quartz.service.impl.QuartzService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
@@ -22,13 +21,12 @@ import java.util.concurrent.atomic.AtomicInteger;
  **/
 @DisallowConcurrentExecution
 @Slf4j
+@Deprecated
 public class QuartzMainJobFactory implements Job {
 
     private AtomicInteger atomicInteger;
 
     private RestTemplate restTemplate;
-
-    private RedisTemplate redisTemplate;
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {

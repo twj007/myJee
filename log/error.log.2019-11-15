@@ -1,0 +1,32 @@
+2019-11-15 15:55:42.001 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:03:34.241 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:03:37.892 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:04:22.865 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:06:38.987 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:07:54.762 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:14:57.827 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:28:30.529 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:29:01.533 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:30:11.540 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:34:48.659 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:35:36.433 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:36:30.654 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:37:16.826 [http-nio-8081-exec-7] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:38:36.157 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:39:45.073 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:53:54.126 [AMQP Connection 127.0.0.1:5672] org.springframework.amqp.rabbit.connection.CachingConnectionFactory$DefaultChannelCloseLogger.log(CachingConnectionFactory.java:1344) [ERROR]: - Channel shutdown: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'type' for exchange 'amq.topic' in vhost '/': received 'direct' but current is 'topic', class-id=40, method-id=10)  
+2019-11-15 16:53:55.142 [AMQP Connection 127.0.0.1:5672] org.springframework.amqp.rabbit.connection.CachingConnectionFactory$DefaultChannelCloseLogger.log(CachingConnectionFactory.java:1344) [ERROR]: - Channel shutdown: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'type' for exchange 'amq.topic' in vhost '/': received 'direct' but current is 'topic', class-id=40, method-id=10)  
+2019-11-15 16:53:57.157 [AMQP Connection 127.0.0.1:5672] org.springframework.amqp.rabbit.connection.CachingConnectionFactory$DefaultChannelCloseLogger.log(CachingConnectionFactory.java:1344) [ERROR]: - Channel shutdown: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'type' for exchange 'amq.topic' in vhost '/': received 'direct' but current is 'topic', class-id=40, method-id=10)  
+2019-11-15 16:54:01.159 [AMQP Connection 127.0.0.1:5672] org.springframework.amqp.rabbit.connection.CachingConnectionFactory$DefaultChannelCloseLogger.log(CachingConnectionFactory.java:1344) [ERROR]: - Channel shutdown: channel error; protocol method: #method<channel.close>(reply-code=406, reply-text=PRECONDITION_FAILED - inequivalent arg 'type' for exchange 'amq.topic' in vhost '/': received 'direct' but current is 'topic', class-id=40, method-id=10)  
+2019-11-15 16:57:24.076 [http-nio-8081-exec-1] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:57:33.688 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:58:40.063 [http-nio-8081-exec-6] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 16:59:55.531 [http-nio-8081-exec-9] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 17:01:01.015 [http-nio-8081-exec-2] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 17:01:10.039 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 17:02:09.221 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 17:05:56.591 [http-nio-8081-exec-8] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 17:05:58.952 [http-nio-8081-exec-10] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 17:07:57.017 [http-nio-8081-exec-3] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 17:07:58.263 [http-nio-8081-exec-4] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  
+2019-11-15 17:08:02.253 [http-nio-8081-exec-5] com.modules.shiro.authc.JwtFilter.executeLogin(JwtFilter.java:51) [ERROR]: - jwt的放开判断记得改回来  

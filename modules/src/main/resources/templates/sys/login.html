@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>定时任务修改</title>
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/js-cookie.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/validator/0.5.3/js/bootstrapValidator.js}"/>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap/validator/0.5.3/js/zh_CN.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/js/bootstrap/validator/0.5.3/css/bootstrapValidator.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}"/>
+</head>
+<body>
+    <div >
+
+    </div>
+<script type="text/javascript" th:inline="javascript">
+    $(function(){
+
+        $('#loginForm').bootstrapValidator({
+                message: '未验证',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                username: {
+                    message: '用户名不为空',
+                    validators: {
+                        notEmpty: {
+                            message: '用户名不为空'
+                        },
+                        remote : {
+                            delay: 500,
+                            name : 'loginName',
+                            url : 'user/checkUserExists',
+                            message : "该用户不存在",
+                            type : 'get'
+                        }
+                    }
+                },
+                password: {
+                    message: '密码不为空不为空',
+                    validators: {
+                        notEmpty: {
+                            message: '密码不为空'
+                        },
+                        callback: {
+                            callback: function (value, validator) {
+                                // Check the password strength
+                                if (value.length < 6) {
+                                    return {
+                                        valid: false,
+                                        message: '密码大于6个字符'
+                                    }
+                                }
+                                return true;
+                            }
+                        }
+                    }
+                }
+        }).on('error.form.bv', function(e){
+            console.log(e);
+        }).on('success.form.bv', function(e){
+            e.preventDefault();
+            $.ajax({
+                url: '../user/login',
+                type: 'POST',
+                data: {
+
+                },
+                success: function(data){
+                    Cookies.remove('submit_cookie');
+                },
+                error: function(e){
+                    console.error(e);
+                    alert(e.responseText);
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

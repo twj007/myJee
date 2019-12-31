@@ -1,5 +1,6 @@
 package com.modules.system.service;
 
+import com.common.model.vo.system.LoginUser;
 import com.common.model.vo.system.SysUser;
 
 import java.util.List;
@@ -36,4 +37,6 @@ public interface ISysUserService {
      * @return
      */
     List<SysUser> findUserByRole(String taskId);
+
+    LoginUser login(LoginUser user);
 }

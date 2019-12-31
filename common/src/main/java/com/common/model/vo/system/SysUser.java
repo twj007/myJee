@@ -4,7 +4,6 @@ import com.common.model.vo.PageInfo;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +14,7 @@ import java.util.Set;
  **@Author: twj
  **@Date: 2019/07/15
  **/
-public class SysUser extends PageInfo implements Serializable {
+public class SysUser extends PageInfo {
 
     private Long id;       // 用户id
     @NotNull(message = "用户名不为空")

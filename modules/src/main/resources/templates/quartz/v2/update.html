@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>定时任务修改</title>
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/layer/layer.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/js-cookie.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/animate.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/bootstrap/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/mediaelementplayer.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/red.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/simple-line-icons.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}"/>
+</head>
+<body>
+<div class="col-md-12 top-20 padding-0">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="panel-heading">
+                    <h4>修改定时任务项</h4>
+                </div>
+                <div class="col-md-6" style="padding-left:10px;">
+                    <form method="post">
+                        <input type="hidden" name="id" id="id" th:value="${id}"/>
+                        <input type="hidden" name="version" id="version"/>
+                        <input type="hidden" name="createTime"
+                               id="createTime"/>
+                        <input type="hidden" name="lastModifyTime"
+                               id="lastModifyTime"/>
+                        <input type="hidden" name="frozenTime"
+                               id="frozenTime"/>
+                        <input type="hidden" name="unfrozenTime"
+                               id="unfrozenTime"/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">任务编号:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="taskNo" id="taskNo" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <br/> <br/> <br/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">任务名称:</label>
+                            <div class="col-sm-10"><input type="text"
+                                                          name="taskName" id="taskName"
+                                                          class="form-control" readonly></div>
+                        </div>
+                        <br/> <br/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">定时配置规则:</label>
+                            <div class="col-sm-9"><input type="text" placeholder="(例如: * /5 * * * * ? 每5秒执行一次)"
+                                                         name="schedulerRule"
+                                                         id="schedulerRule"
+                                                         class="form-control">
+                            </div>
+                            <a href="#" onclick="openCron()" class="col-sm-1" style="float: right; font-size:20px"><span>?</span></a>
+                        </div>
+                        <br/> <br/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">冻结状态:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="frozenStatus">
+                                    <option th:value="FROZEN">
+                                        冻结
+                                    </option>
+                                    <option th:value="UNFROZEN">
+                                        解冻
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <br/> <br/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">执行方:</label>
+                            <div class="col-sm-10"><input type="text"
+                                                          name="executorNo" id="executorNo"
+                                                          class="form-control"></div>
+                        </div>
+                        <br/> <br/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">执行方式:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="sendType">
+                                    <option th:value="http">http
+                                    </option>
+                                    <option th:value="kafka">
+                                        kafka
+                                    </option>
+                                    <option th:value="redis">
+                                        redis
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <br/> <br/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">url:</label>
+                            <div class="col-sm-10"><input type="text" name="url"
+                                                          id="url" class="form-control"></div>
+                        </div>
+                        <br/> <br/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">执行参数:</label>
+                            <div class="col-sm-10"><input type="text" name="executeParamter"
+                                                          id="executeParamter"
+                                                          class="form-control"></div>
+                        </div>
+                        <br/><br/>
+                        <div class="form-group"><label class="col-sm-2 control-label text-right">timeKey:</label>
+                            <div class="col-sm-10"><input type="text" placeholder="(例如: yyyy-MM-dd HH:mm:ss)"
+                                                          name="timeKey"
+                                                          id="timeKey" class="form-control" readonly></div>
+                        </div>
+                        <br/> <br/><br/>
+                        <input type="button" class="btn btn-3d btn-danger" align="left"
+                               style="float:right;" value="关闭" id="close"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" class="btn  btn-3d btn-success" id="updateTask" align="right" value="保存"/>
+                    </form>
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:inline="javascript">
+
+    function openCron(){
+        layer.open({
+            type: 2,
+            area: ['100%', '100%'],
+            fixed: true, //不固定
+            maxmin: true,
+            content: '/quartz/cron/page'
+        });
+    }
+
+    $(function () {
+        if($('#id').val()){
+            $.ajax({
+                url: '../list/task',
+                data: {
+                    id: $('#id').val()
+                },
+                success: function(res){
+                    if(res.code == 200){
+                        var data = res.body.rows[0];
+                        $("#taskNo").val(data.taskno);
+                        $("#taskName").val(data.taskname);
+                        $("#schedulerRule").val(data.schedulerrule);
+                        $("#frozenStatus").val(data.frozenstatus);
+                        $("#executorNo").val(data.executorno);
+                        $("#sendType").val(data.sendtype);
+                        $("#url").val(data.url);
+                        $("#executeParamter").val(data.executeparamter);
+                        $("#timeKey").val(data.timekey);
+                        $("#version").val(data.version);
+                        $("#createTime").val(data.createtime);
+                        $("#lastModifyTime").val(data.lastmodifytime);
+                        $("#frozenTime").val(data.frozentime);
+                        $("#unfrozenTime").val(data.unfrozentime);
+                    }else{
+                        alert(res.msg);
+                    }
+                },
+                error: function(e){
+                    console.error(e);
+                }
+            });
+            $("#close").on('click', function(e){
+                window.location.href = window.location.href.substring(0, window.location.href.lastIndexOf('/') ? window.location.href.lastIndexOf('/') : 0) + '/task';
+            });
+            $("#updateTask").on('click', function (e) {
+                var taskNo = $("#taskNo").val();
+                var taskName = $("#taskName").val();
+                var schedulerRule = $("#schedulerRule").val();
+                var frozenStatus = $("#frozenStatus").val();
+                var executorNo = $("#executorNo").val();
+                var sendType = $("#sendType").val();
+                var url = $("#url").val();
+                var executeParamter = $("#executeParamter").val();
+                var timeKey = $("#timeKey").val();
+                var id = $("#id").val();
+                var version = $("#version").val();
+                var createTime = $("#createTime").val();
+                var lastModifyTime = $("#lastModifyTime").val();
+                var frozenTime = $("#frozenTime").val();
+                var unfrozenTime = $("#unfrozenTime").val();
+
+
+                $.ajax({
+                    url: "../task/updateAndReDeploy",
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        "taskno": taskNo,
+                        "taskname": taskName,
+                        "schedulerrule": schedulerRule,
+                        "frozenstatus": frozenStatus,
+                        "executorno": executorNo,
+                        "sendtype": sendType,
+                        "url": url,
+                        "executeparamter": executeParamter,
+                        "timekey": timeKey,
+                        "id": id,
+                        "version": version,
+                        "createTime": createTime,
+                        "lastmodifytime": lastModifyTime,
+                        "frozentime": frozenTime,
+                        "unfrozentime": unfrozenTime
+                    },
+                    beforeSend: function(){
+                        if(Cookies.get("submit_cookie")){
+                            Cookies.set("submit_cookie", "1", {expires: 0.002, path: window.location.href.replace(window.location.protocol + "\\" + window.location.host, '')});
+                        }else{
+                            Cookies.set("submit_cookie", "0", {expires: 0.002, path: window.location.href.replace(window.location.protocol + "\\" + window.location.host, '')});
+                        }
+                    },
+                    success: function (result) {
+                        Cookies.remove("submit_cookie");
+                        if(result.msg === "success"){
+                            alert(result.msg, function(){
+                                var href = window.location.href;
+                                var idx = href.match("/quartz")?href.match("/quartz").index:0;
+                                window.location.href = href.substr(0, idx) + '/quartz/v2/page/task';
+                            });
+
+                        }else{
+                            alert(result.msg);
+                        }
+                    },
+                    error: function(e){
+                        console.error(e);
+                        alert(e.responseText);
+                    }
+                });
+
+            });
+
+        }
+
+    });
+</script>
+</body>
+</html>

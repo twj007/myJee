@@ -1,0 +1,4 @@
+2019-12-06 17:01:31.869 [http-nio-8081-exec-1] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
+2019-12-06 17:01:33.311 [http-nio-8081-exec-5] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
+2019-12-06 17:04:45.227 [http-nio-8081-exec-10] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
+2019-12-06 17:04:48.809 [http-nio-8081-exec-9] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  

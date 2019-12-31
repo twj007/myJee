@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.modules.mybatis.dao.TaskInformationMapper" >
+  <resultMap id="BaseResultMap" type="com.modules.mybatis.modal.TaskInformation" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="taskNo" property="taskno" jdbcType="VARCHAR" />
+    <result column="taskName" property="taskname" jdbcType="VARCHAR" />
+    <result column="schedulerRule" property="schedulerrule" jdbcType="VARCHAR" />
+    <result column="frozenStatus" property="frozenstatus" jdbcType="VARCHAR" />
+    <result column="executorNo" property="executorno" jdbcType="VARCHAR" />
+    <result column="frozenTime" property="frozentime" jdbcType="BIGINT" />
+    <result column="unfrozenTime" property="unfrozentime" jdbcType="BIGINT" />
+    <result column="createTime" property="createtime" jdbcType="BIGINT" />
+    <result column="lastModifyTime" property="lastmodifytime" jdbcType="BIGINT" />
+    <result column="sendType" property="sendtype" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="executeParamter" property="executeparamter" jdbcType="VARCHAR" />
+    <result column="timeKey" property="timekey" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from quartz_task_informations
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.modules.mybatis.modal.TaskInformation" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into quartz_task_informations (id, version, taskNo, 
+      taskName, schedulerRule, frozenStatus, 
+      executorNo, frozenTime, unfrozenTime, 
+      createTime, lastModifyTime, sendType, 
+      url, executeParamter, timeKey
+      )
+    values (#{id,jdbcType=BIGINT}, #{version,jdbcType=INTEGER}, #{taskno,jdbcType=VARCHAR}, 
+      #{taskname,jdbcType=VARCHAR}, #{schedulerrule,jdbcType=VARCHAR}, #{frozenstatus,jdbcType=VARCHAR}, 
+      #{executorno,jdbcType=VARCHAR}, #{frozentime,jdbcType=BIGINT}, #{unfrozentime,jdbcType=BIGINT}, 
+      #{createtime,jdbcType=BIGINT}, #{lastmodifytime,jdbcType=BIGINT}, #{sendtype,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{executeparamter,jdbcType=VARCHAR}, #{timekey,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.modules.mybatis.modal.TaskInformation" >
+    update quartz_task_informations
+    <set>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="taskno != null">
+        taskNo = #{taskno,jdbcType=VARCHAR},
+      </if>
+      <if test="taskname != null">
+        taskName = #{taskname,jdbcType=VARCHAR},
+      </if>
+      <if test="schedulerrule != null">
+        schedulerRule = #{schedulerrule,jdbcType=VARCHAR},
+      </if>
+      <if test="frozenstatus != null">
+        frozenStatus = #{frozenstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="executorno != null">
+        executorNo = #{executorno,jdbcType=VARCHAR},
+      </if>
+      <if test="frozentime != null">
+        frozenTime = #{frozentime,jdbcType=BIGINT},
+      </if>
+      <if test="unfrozentime != null">
+        unfrozenTime = #{unfrozentime,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="lastmodifytime != null">
+        lastModifyTime = #{lastmodifytime,jdbcType=BIGINT},
+      </if>
+      <if test="sendtype != null">
+        sendType = #{sendtype,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="timekey != null">
+        timeKey = #{timekey,jdbcType=VARCHAR},
+      </if>
+      <if test="executeparamter != null">
+        executeParamter = #{executeparamter,jdbcType=VARCHAR}
+      </if>
+    </set>
+    <where>
+      id = #{id,jdbcType=BIGINT}
+    </where>
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, version, taskNo, taskName, schedulerRule, frozenStatus, executorNo, frozenTime, 
+    unfrozenTime, createTime, lastModifyTime, sendType, url, executeParamter, timeKey
+    from quartz_task_informations
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, version, taskNo, taskName, schedulerRule, frozenStatus, executorNo, frozenTime, 
+    unfrozenTime, createTime, lastModifyTime, sendType, url, executeParamter, timeKey
+    from quartz_task_informations
+  </select>
+  <select id="list" resultMap="BaseResultMap" parameterType="com.modules.mybatis.modal.TaskInformation">
+    select * from quartz_task_informations
+    <where>
+      <if test="id != null">
+        id = #{id}
+      </if>
+      <if test="taskno != null">
+        and taskNo = #{taskno}
+      </if>
+      <if test="taskname != null">
+        and taskName = #{taskname}
+      </if>
+      <if test="executorno != null">
+        and executorNo = #{executorno}
+      </if>
+      <if test="frozenstatus != null">
+        and frozenStatus = #{frozenstatus}
+      </if>
+    </where>
+  </select>
+</mapper>
