@@ -1,6 +1,6 @@
 package com.modules.mybatis.dao;
 
-import com.modules.mybatis.modal.TaskRecord;
+import com.common.model.dto.quartz.TaskRecord;
 
 import java.util.List;
 

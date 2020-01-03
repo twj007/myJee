@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.modules.mybatis.dao.TaskRecordMapper" >
-  <resultMap id="BaseResultMap" type="com.modules.mybatis.modal.TaskRecord" >
+  <resultMap id="BaseResultMap" type="com.common.model.dto.quartz.TaskRecord" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="taskno" property="taskno" jdbcType="VARCHAR" />
     <result column="timekeyvalue" property="timekeyvalue" jdbcType="VARCHAR" />
@@ -16,7 +16,7 @@
     delete from quartz_task_records
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.modules.mybatis.modal.TaskRecord" >
+  <insert id="insert" parameterType="com.common.model.dto.quartz.TaskRecord" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -29,7 +29,7 @@
       #{failreason,jdbcType=VARCHAR}, #{createtime,jdbcType=BIGINT}, #{lastmodifytime,jdbcType=BIGINT}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.modules.mybatis.modal.TaskRecord" >
+  <update id="updateByPrimaryKey" parameterType="com.common.model.dto.quartz.TaskRecord" >
     update quartz_task_records
     <set>
       <if test="taskno != null">
@@ -72,7 +72,7 @@
     createTime, lastModifyTime
     from quartz_task_records
   </select>
-  <select id="list" resultMap="BaseResultMap" parameterType="com.modules.mybatis.modal.TaskRecord">
+  <select id="list" resultMap="BaseResultMap" parameterType="com.common.model.dto.quartz.TaskRecord">
     select * from quartz_task_records
     <where>
       <if test="taskno != null">

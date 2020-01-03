@@ -1,4 +1,4 @@
-package com.modules.quartz.service;
+package com.jee.service.quartz;
 
 
 import com.common.model.vo.quartz.QuartzErrorTasks;

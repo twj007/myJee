@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.modules.mybatis.dao.TaskErrorMapper" >
-  <resultMap id="BaseResultMap" type="com.modules.mybatis.modal.TaskError" >
+  <resultMap id="BaseResultMap" type="com.common.model.dto.quartz.TaskError" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="taskExecuteRecordId" property="taskexecuterecordid" jdbcType="VARCHAR" />
     <result column="errorKey" property="errorkey" jdbcType="VARCHAR" />
@@ -14,7 +14,7 @@
     delete from quartz_task_errors
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.modules.mybatis.modal.TaskError" >
+  <insert id="insert" parameterType="com.common.model.dto.quartz.TaskError" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -25,7 +25,7 @@
       #{createtime,jdbcType=BIGINT}, #{lastmodifytime,jdbcType=BIGINT}, #{errorvalue,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.modules.mybatis.modal.TaskError" >
+  <update id="updateByPrimaryKey" parameterType="com.common.model.dto.quartz.TaskError" >
     update quartz_task_errors
     set taskExecuteRecordId = #{taskexecuterecordid,jdbcType=VARCHAR},
       errorKey = #{errorkey,jdbcType=VARCHAR},
@@ -43,7 +43,7 @@
     select id, taskExecuteRecordId, errorKey, createTime, lastModifyTime, errorValue
     from quartz_task_errors
   </select>
-  <select id="list" resultMap="BaseResultMap" parameterType="com.modules.mybatis.modal.TaskError">
+  <select id="list" resultMap="BaseResultMap" parameterType="com.common.model.dto.quartz.TaskError">
     select * from quartz_task_errors
     <where>
       <if test="taskno != null">

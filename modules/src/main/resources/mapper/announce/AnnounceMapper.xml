@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.modules.system.dao.AnnouncementDao" >
+        <resultMap id="announceMap" type="com.common.model.dto.announce.AnnounceDTO" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="author_id" property="authorId" jdbcType="BIGINT" />
+        <result column="authorName" property="authorName" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+        <result column="_count" property="count" jdbcType="BIGINT" />
+        <result column="send_date" property="sendDate" jdbcType="TIMESTAMP" />
+        <result column="_type" property="type" jdbcType="VARCHAR" />
+        <result column="send_type" property="sendType" jdbcType="VARCHAR" />
+    </resultMap>
+    <!-- <resultMap id="announceAndDetailMap" type="com.common.model.dto.announce.AnnounceDTO" >
+         <id column="id" property="id" jdbcType="BIGINT" />
+         <result column="author_id" property="authorId" jdbcType="BIGINT" />
+         <result column="authorName" property="authorName" jdbcType="VARCHAR" />
+         <result column="title" property="title" jdbcType="VARCHAR" />
+         <result column="content" property="content" jdbcType="VARCHAR" />
+         <result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+         <result column="status" property="status" jdbcType="VARCHAR" />
+         <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+         <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+         <result column="_count" property="count" jdbcType="BIGINT" />
+         <result column="_type" property="type" jdbcType="VARCHAR" />
+         <result column="send_date" property="sendDate" jdbcType="TIMESTAMP" />
+         <result column="send_type" property="sendType" jdbcType="VARCHAR" />
+         <collection property="id" ofType="java.util.List" select="getReceiverByMessageId"/>
+     </resultMap>
+     <resultMap id="announceDetailMap" type="com.common.model.dto.announce.AnnounceDetailDTO">
+         <id column="id" property="id" jdbcType="BIGINT" />
+         <result column="message_id" property="messageId" jdbcType="BIGINT" />
+         <result column="user_id" property="userId" jdbcType="BIGINT" />
+         <result column="send_status" property="sendStatus" jdbcType="VARCHAR" />
+         <result column="send_date" property="sendDate" jdbcType="TIMESTAMP" />
+     </resultMap> -->
+
+    <sql id="totalColumns">
+        author_id, title, content, file_url, status, create_date, modify_date, _count, _type, send_type
+    </sql>
+    <sql id="detailColumns">
+        message_id, user_id, send_status, send_date
+    </sql>
+    <sql id="total">
+        id, author_id as authorId, title, content, file_url as fileUrl, status, create_date as createDate, modify_date as modifyDate, _count  as "count", _type as "type", send_type as sendType
+    </sql>
+    <sql id="detail">
+        id, message_id as messageId, user_id as userId, send_status as sendStatus, send_date as sendDate
+    </sql>
+
+    <insert id="saveAnnounce" parameterType="com.common.model.dto.announce.AnnounceDTO">
+        <selectKey keyProperty="id" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_message (<include refid="totalColumns"></include>)
+        values (#{authorId, jdbcType=BIGINT}, #{title, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR},
+                #{fileUrl, jdbcType=VARCHAR}, 'Y', #{createDate, jdbcType=TIMESTAMP},
+                #{modifyDate, jdbcType=TIMESTAMP}, #{count, jdbcType=BIGINT}, #{type, jdbcType=VARCHAR}, #{sendType, jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="saveAnnounceDetails" parameterType="java.util.List">
+
+        insert into sys_message_record (<include refid="detailColumns"></include>)
+        values
+        <foreach collection="list" separator="," item="i">
+            (#{i.messageId, jdbcType=BIGINT}, #{i.userId, jdbcType=BIGINT}, #{i.sendStatus, jdbcType=VARCHAR}, #{i.sendDate, jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+
+    <update id="updateAnnounceById" parameterType="com.common.model.dto.announce.AnnounceDTO">
+        update sys_message
+        <set>
+            <if test="title != null">
+                title = #{title, jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content, jdbcType=VARCHAR},
+            </if>
+            <if test="fileUrl != null">
+                file_url = #{fileUrl, jdbcType=VARCHAR},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate, jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status, jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                _type = #{type, jdbcType=VARCHAR},
+            </if>
+            <if test="sendType != null">
+                send_type = #{sendType, jdbcType=VARCHAR}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <update id="deleteAnnounceByIds" parameterType="java.util.List">
+        update sys_message
+        set   status = 'N'
+        where id in
+        <foreach collection="list" item="i" open="(" close=")" separator=",">
+            #{i}
+        </foreach>
+    </update>
+
+
+    <select id="getAnnounceList" parameterType="com.common.model.dto.announce.AnnounceDTO" resultType="com.common.model.dto.announce.AnnounceDTO">
+        select m.id, m.author_id as authorId, m.title, m.content, m.file_url as fileUrl, m.status, m.create_date as createDate, m.modify_date as modifyDate, m._count  as "count", m._type as "type", m.send_type as sendType, u.nickname as authorName
+        from sys_message m left join sys_user u on m.author_id = u.id
+        <where>
+            <if test="id != null">
+                m.id = #{id}
+            </if>
+            <if test="authorId != null">
+                and m.author_id = #{authorId}
+            </if>
+            <if test="sendType != null">
+                and m.send_type = #{sendType}
+            </if>
+            <if test="type != null">
+                and m._type = #{type}
+            </if>
+            <if test="createDate != null">
+                and m.create_date = #{createDate}
+            </if>
+        </where>
+    </select>
+
+    <select id="getAnnounceDetailList" parameterType="com.common.model.dto.announce.AnnounceDetailDTO" resultType="com.common.model.dto.announce.AnnounceDetailDTO">
+        select <include refid="detail"></include> from sys_message_record
+        <where>
+            <if test="messageId != null">
+                message_id = #{messageId}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="getAnnounceById" parameterType="com.common.model.dto.announce.AnnounceDTO" resultType="com.common.model.dto.announce.AnnounceDTO">
+        select m.id, m.author_id as authorId, m.title, m.content, m.file_url as fileUrl, m.status, m.create_date as createDate, m.modify_date as modifyDate, m._count  as "count", m._type as "type", m.send_type as sendType, u.nickname as authorName
+        from sys_message m left join sys_user u on m.author_id = u.id
+        where m.id = #{id}
+    </select>
+
+    <select id="getAnnounceCount" parameterType="com.common.model.dto.announce.AnnounceDTO" resultType="java.lang.Integer">
+        select count(*) from sys_message
+        where id = #{id}
+    </select>
+
+    <select id="getAnnounceListByIds" parameterType = "java.util.List" resultType="com.common.model.dto.announce.AnnounceDTO">
+         select m.id, m.author_id as authorId, m.title, m.content, m.file_url as fileUrl, m.status, m.create_date as createDate, m.modify_date as modifyDate, m._count  as "count", m._type as "type", m.send_type as sendType, u.nickname as authorName
+        from sys_message m left join sys_user u on m.author_id = u.id
+        where m.id in
+        <foreach collection="list" item="i" separator=";" open="(" close=")">
+            #{i}
+        </foreach>
+    </select>
+
+    <select id="getUnReadAnnounce" parameterType="com.common.model.dto.announce.AnnounceDTO" resultMap="announceMap">
+        select m.*, u.nickname as authorName from sys_message m left join sys_user u on m.author_id = u.id
+        where m.send_type = "1"
+    </select>
+
+
+
+
+
+
+</mapper>

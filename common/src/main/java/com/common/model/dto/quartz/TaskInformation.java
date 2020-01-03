@@ -1,4 +1,4 @@
-package com.modules.mybatis.modal;
+package com.common.model.dto.quartz;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

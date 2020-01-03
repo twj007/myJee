@@ -1,15 +1,15 @@
 package com.modules.quartz.controller;
 
 import com.common.annotation.RepeatToken;
+import com.common.model.dto.quartz.TaskError;
+import com.common.model.dto.quartz.TaskInformation;
+import com.common.model.dto.quartz.TaskRecord;
 import com.common.model.vo.PageVo;
 import com.common.utils.ResultBody;
 import com.common.utils.Results;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.modules.mybatis.modal.TaskError;
-import com.modules.mybatis.modal.TaskInformation;
-import com.modules.mybatis.modal.TaskRecord;
-import com.modules.quartz.service.QuartzServiceV2;
+import com.jee.service.quartz.QuartzServiceV2;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

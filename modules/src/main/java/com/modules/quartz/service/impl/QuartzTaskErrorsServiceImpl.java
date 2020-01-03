@@ -1,8 +1,8 @@
 package com.modules.quartz.service.impl;
 
 import com.common.model.vo.quartz.QuartzErrorTasks;
+import com.jee.service.quartz.QuartzTaskErrorsService;
 import com.modules.quartz.dao.QuartzTaskErrorsMapper;
-import com.modules.quartz.service.QuartzTaskErrorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,5 @@
 import com.JeeApplication;
-import com.modules.quartz.service.QuartzServiceV2;
+import com.jee.service.quartz.QuartzServiceV2;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

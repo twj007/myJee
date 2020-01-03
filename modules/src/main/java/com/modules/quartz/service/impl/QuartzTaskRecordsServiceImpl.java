@@ -2,8 +2,8 @@ package com.modules.quartz.service.impl;
 
 
 import com.common.model.vo.quartz.QuartzTaskRecords;
+import com.jee.service.quartz.QuartzTaskRecordsService;
 import com.modules.quartz.dao.QuartzTaskRecordsMapper;
-import com.modules.quartz.service.QuartzTaskRecordsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

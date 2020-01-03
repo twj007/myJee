@@ -1,4 +1,4 @@
-package com.modules.system.service;
+package com.jee.service.system;
 
 import com.common.model.vo.system.LoginUser;
 import com.common.model.vo.system.SysUser;

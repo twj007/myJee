@@ -1,9 +1,9 @@
-package com.modules.quartz.service;
+package com.jee.service.quartz;
 
+import com.common.model.dto.quartz.TaskError;
+import com.common.model.dto.quartz.TaskInformation;
+import com.common.model.dto.quartz.TaskRecord;
 import com.common.utils.ResultBody;
-import com.modules.mybatis.modal.TaskError;
-import com.modules.mybatis.modal.TaskInformation;
-import com.modules.mybatis.modal.TaskRecord;
 import org.quartz.SchedulerException;
 
 import java.util.List;

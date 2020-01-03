@@ -5,7 +5,7 @@ import com.common.model.vo.message.EmailEntity;
 import com.common.utils.ResultBody;
 import com.common.utils.Results;
 import com.component.RabbitProducer;
-import com.modules.message.service.IMessageService;
+import com.jee.service.message.IMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;

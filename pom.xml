@@ -12,6 +12,7 @@
         <module>common</module>
         <module>modules</module>
         <module>workflow</module>
+        <module>service</module>
     </modules>
 
     <!-- 第一步：添加Springboot的parent -->

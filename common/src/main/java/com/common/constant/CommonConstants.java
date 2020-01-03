@@ -57,6 +57,14 @@ public class CommonConstants {
 
     public static final String USERTASK = "userTask";
 
+    /**************************************
+     * *       *       *
+     *  *     * *     *
+     *   *   *   *   *
+     *    ***     ***      webservice constant**/
+    public static final String WEBSERVICE_USERNAME = "jien007";
+    public static final String WEBSERVICE_PASSWORD = "123456";
+
     /****
      *  *******
      *  **

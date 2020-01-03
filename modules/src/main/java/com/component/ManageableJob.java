@@ -1,17 +1,15 @@
 package com.component;
 
 import com.common.constant.CommonConstants;
+import com.common.model.dto.quartz.TaskInformation;
+import com.common.model.dto.quartz.TaskRecord;
 import com.common.utils.ResultBody;
 import com.common.utils.SpringBeanFactoryUtils;
-import com.modules.mybatis.modal.TaskInformation;
-import com.modules.mybatis.modal.TaskRecord;
-import com.modules.quartz.service.QuartzServiceV2;
+import com.jee.service.quartz.QuartzServiceV2;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 /***
  * 自己实现的可管理的job

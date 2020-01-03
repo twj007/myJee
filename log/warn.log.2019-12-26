@@ -1295,7 +1295,7 @@ Was expecting one of:
 2019-12-26 15:53:33.938 [http-nio-8081-exec-4] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
 2019-12-26 15:53:34.205 [http-nio-8081-exec-5] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
 2019-12-26 17:00:15.938 [restartedMain] [org.springframework.boot.SpringApplication] [ERROR]: - Application run failed  
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'quartzControllerV2': Unsatisfied dependency expressed through field 'quartzServiceV2'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.modules.quartz.service.QuartzServiceV2' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'quartzControllerV2': Unsatisfied dependency expressed through field 'quartzServiceV2'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jee.service.quartz.QuartzServiceV2' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:586)
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372)
@@ -1321,7 +1321,7 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.modules.quartz.service.QuartzServiceV2' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jee.service.quartz.QuartzServiceV2' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1506)
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1101)
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)

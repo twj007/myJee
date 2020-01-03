@@ -1,40 +1,35 @@
-//package com.modules.system.dao;
-//
-//import com.common.model.vo.system.AnnouncementVo;
-//import org.mapstruct.Mapper;
-//
-//import java.util.List;
-//
-///***
-// * @author info
-// * announcement dao
-// */
-//@Mapper
-//public interface AnnouncementDao {
-//    /***
-//     * 保存
-//     * @param announcementVo
-//     * @return
-//     */
-//    long saveAnnouncement(AnnouncementVo announcementVo);
-//
-//    /***
-//     * 更新
-//     * @param announcementVo
-//     * @return
-//     */
-//    long updateAnnouncement(AnnouncementVo announcementVo);
-//
-//    /***
-//     * 分页
-//     * @param announcementVo
-//     */
-//    List<AnnouncementVo> list(AnnouncementVo announcementVo);
-//
-//    /***
-//     * 明细
-//     * @param announcementVo
-//     * @return
-//     */
-//    AnnouncementVo getDetail(AnnouncementVo announcementVo);
-//}
+package com.modules.system.dao;
+
+import com.common.model.dto.announce.AnnounceDTO;
+import com.common.model.dto.announce.AnnounceDetailDTO;
+import org.mapstruct.Mapper;
+
+import java.util.List;
+
+/***
+ * @author info
+ * announce dao
+ */
+@Mapper
+public interface AnnouncementDao {
+
+    List<AnnounceDTO> getAnnounceList(AnnounceDTO announce);
+
+    List<AnnounceDetailDTO> getAnnounceDetailList(AnnounceDetailDTO announceDetailDTO);
+
+    AnnounceDTO getAnnounceById(AnnounceDTO a);
+
+    long updateAnnounceById(AnnounceDTO announce);
+
+    long deleteAnnounceByIds(List<Long> ids);
+
+    int getAnnounceCount(AnnounceDTO announce);
+
+    List<AnnounceDTO> getAnnounceListByIds(List<Long> ids);
+
+    long saveAnnounce(AnnounceDTO announce);
+
+    long saveAnnounceDetails(List<AnnounceDetailDTO> details);
+
+    List<AnnounceDTO> getUnReadAnnounce();
+}

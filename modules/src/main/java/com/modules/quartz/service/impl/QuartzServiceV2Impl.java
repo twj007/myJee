@@ -1,16 +1,16 @@
 package com.modules.quartz.service.impl;
 
 import com.common.constant.CommonConstants;
+import com.common.model.dto.quartz.TaskError;
+import com.common.model.dto.quartz.TaskInformation;
+import com.common.model.dto.quartz.TaskRecord;
 import com.common.utils.ResultBody;
 import com.common.utils.Results;
 import com.component.ManageableJob;
+import com.jee.service.quartz.QuartzServiceV2;
 import com.modules.mybatis.dao.TaskErrorMapper;
 import com.modules.mybatis.dao.TaskInformationMapper;
 import com.modules.mybatis.dao.TaskRecordMapper;
-import com.modules.mybatis.modal.TaskError;
-import com.modules.mybatis.modal.TaskInformation;
-import com.modules.mybatis.modal.TaskRecord;
-import com.modules.quartz.service.QuartzServiceV2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.quartz.*;

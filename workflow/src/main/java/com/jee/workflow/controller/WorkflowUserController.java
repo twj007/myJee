@@ -7,6 +7,7 @@ import com.common.model.workflow.vo.HistoricInstanceVo;
 import com.common.utils.EncryptUtils;
 import com.common.utils.ResultBody;
 import com.common.utils.Results;
+import com.jee.service.webservice.ISysUserService;
 import com.jee.workflow.component.DeleteTaskCmd;
 import com.jee.workflow.component.SetFLowNodeAndGoCmd;
 import io.swagger.annotations.Api;
@@ -22,15 +23,13 @@ import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,8 +53,8 @@ public class WorkflowUserController extends BaseController{
     @Value("${sys.rest.findUserByRole}")
     private String findUserByRole;
 
-    @Autowired
-    private RestTemplate restTemplate;
+    @Resource(name = "sysUserService")
+    private ISysUserService userService;
 
     @GetMapping("/start")
     @ApiOperation(value = "开启流程", notes = "参数格式： 1.流程部署key， 2.业务数据主键， 3.用于流程判断的参数 4.相关业务url 5.相关备注")
@@ -110,14 +109,7 @@ public class WorkflowUserController extends BaseController{
             return Results.SUCCESS.result(CommonConstants.FINISHED, null);
         }else{
             String taskId = task.getTaskDefinitionKey();
-            ResultBody result = restTemplate.getForObject(findUserByRole+"?taskId="+taskId, ResultBody.class);
-            List<SysUser> users;
-            if(result.getCode() == HttpStatus.OK.value()){
-                users = (List<SysUser>) result.getBody();
-            }else{
-                log.error("[/selectNextUser] errors when rpc findUserByRole {}", result.getMsg());
-                return Results.BAD__REQUEST.result("查询处理人时发生异常", null);
-            }
+            List<SysUser> users = userService.findUserByRole(taskId);
             if(users == null || users.size() == 0){
                 runtimeService.deleteProcessInstance(eventId, CommonConstants.NOBODY);
                 return Results.BAD__REQUEST.result(CommonConstants.NOBODY, null);
@@ -148,13 +140,7 @@ public class WorkflowUserController extends BaseController{
                     user.setUsername(username);
                     users.add(user);
                 }else{
-                    ResultBody result = restTemplate.getForObject(findUserByRole+"?taskId="+taskId, ResultBody.class);
-                    if(result.getCode() == HttpStatus.OK.value()){
-                        users = (List<SysUser>) result.getBody();
-                    }else{
-                        log.error("[/selectNextUser] errors when rpc findUserByRole {}", result.getMsg());
-                        return null;
-                    }
+                    users = userService.findUserByRole(taskId);
                 }
             }
             if(users == null || users.size() == 0){
@@ -310,4 +296,5 @@ public class WorkflowUserController extends BaseController{
         BeanUtils.copyProperties(list, vos);
         return Results.SUCCESS.result(CommonConstants.SUCCESS, vos);
     }
+
 }

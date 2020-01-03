@@ -1,6 +1,5 @@
 package com.common.model.vo.system;
 
-import com.common.model.vo.PageInfo;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
@@ -14,7 +13,7 @@ import java.util.Set;
  **@Author: twj
  **@Date: 2019/07/15
  **/
-public class SysUser extends PageInfo {
+public class SysUser {
 
     private Long id;       // 用户id
     @NotNull(message = "用户名不为空")

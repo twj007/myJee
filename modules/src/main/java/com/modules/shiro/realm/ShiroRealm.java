@@ -5,8 +5,8 @@ import com.common.model.vo.system.LoginUser;
 import com.common.model.vo.system.SysUser;
 import com.common.utils.ConvertUtils;
 import com.common.utils.EncryptUtils;
+import com.jee.service.system.ISysUserService;
 import com.modules.shiro.authc.JwtToken;
-import com.modules.system.service.ISysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.util.*;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /***

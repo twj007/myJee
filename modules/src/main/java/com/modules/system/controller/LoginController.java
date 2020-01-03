@@ -6,7 +6,7 @@ import com.common.model.vo.system.SysUser;
 import com.common.utils.EncryptUtils;
 import com.common.utils.ResultBody;
 import com.common.utils.Results;
-import com.modules.system.service.ISysUserService;
+import com.jee.service.system.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;

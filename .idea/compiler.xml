@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
         <module name="modules" />
+        <module name="service" />
         <module name="workflow" />
       </profile>
     </annotationProcessing>

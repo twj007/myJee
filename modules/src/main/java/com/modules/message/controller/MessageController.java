@@ -6,7 +6,7 @@ import com.common.utils.ResultBody;
 import com.common.utils.Results;
 import com.component.RabbitProducer;
 import com.config.RabbitConfig;
-import com.modules.message.service.IMessageService;
+import com.jee.service.message.IMessageService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

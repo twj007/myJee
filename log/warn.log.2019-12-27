@@ -7,8 +7,8 @@
 2019-12-27 09:19:26.767 [http-nio-8081-exec-2] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
 2019-12-27 09:19:28.518 [http-nio-8081-exec-3] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
 2019-12-27 09:20:08.815 [http-nio-8081-exec-4] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
-2019-12-27 09:20:40.638 [http-nio-8081-exec-3] [com.modules.system.controller.ErrorResolver] [ERROR]: - http-nio-8081-exec-3 [exception]: msg:nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.modules.mybatis.modal.TaskRecord', cause: {}  
-org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.modules.mybatis.modal.TaskRecord'
+2019-12-27 09:20:40.638 [http-nio-8081-exec-3] [com.modules.system.controller.ErrorResolver] [ERROR]: - http-nio-8081-exec-3 [exception]: msg:nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.common.model.dto.quartz.TaskRecord', cause: {}
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.common.model.dto.quartz.TaskRecord'
 	at com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -82,7 +82,7 @@ org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.modules.mybatis.modal.TaskRecord'
+Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.common.model.dto.quartz.TaskRecord'
 	at org.apache.ibatis.reflection.Reflector.getGetInvoker(Reflector.java:419)
 	at org.apache.ibatis.reflection.MetaClass.getGetInvoker(MetaClass.java:164)
 	at org.apache.ibatis.reflection.wrapper.BeanWrapper.getBeanProperty(BeanWrapper.java:162)
@@ -139,8 +139,8 @@ Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter 
 2019-12-27 09:24:00.758 [http-nio-8081-exec-2] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
 2019-12-27 09:24:02.016 [http-nio-8081-exec-3] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
 2019-12-27 09:24:12.882 [http-nio-8081-exec-4] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
-2019-12-27 09:24:50.198 [http-nio-8081-exec-3] [com.modules.system.controller.ErrorResolver] [ERROR]: - http-nio-8081-exec-3 [exception]: msg:nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.modules.mybatis.modal.TaskRecord', cause: {}  
-org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.modules.mybatis.modal.TaskRecord'
+2019-12-27 09:24:50.198 [http-nio-8081-exec-3] [com.modules.system.controller.ErrorResolver] [ERROR]: - http-nio-8081-exec-3 [exception]: msg:nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.common.model.dto.quartz.TaskRecord', cause: {}
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.common.model.dto.quartz.TaskRecord'
 	at com.modules.system.controller.ErrorResolver.resolveException(ErrorResolver.java:37)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -214,7 +214,7 @@ org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.modules.mybatis.modal.TaskRecord'
+Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'taskNo' in 'class com.common.model.dto.quartz.TaskRecord'
 	at org.apache.ibatis.reflection.Reflector.getGetInvoker(Reflector.java:419)
 	at org.apache.ibatis.reflection.MetaClass.getGetInvoker(MetaClass.java:164)
 	at org.apache.ibatis.reflection.wrapper.BeanWrapper.getBeanProperty(BeanWrapper.java:162)
@@ -454,7 +454,7 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving template "/quar
 2019-12-27 10:10:00.744 [http-nio-8081-exec-10] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
 2019-12-27 10:10:01.045 [http-nio-8081-exec-1] [com.modules.shiro.authc.JwtFilter] [ERROR]: - jwt的放开判断记得改回来  
 2019-12-27 10:25:50.390 [restartedMain] [org.springframework.boot.SpringApplication] [ERROR]: - Application run failed  
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'quartzControllerV2': Unsatisfied dependency expressed through field 'quartzServiceV2'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.modules.quartz.service.QuartzServiceV2' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'quartzControllerV2': Unsatisfied dependency expressed through field 'quartzServiceV2'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jee.service.quartz.QuartzServiceV2' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:586)
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:372)
@@ -480,7 +480,7 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.modules.quartz.service.QuartzServiceV2' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jee.service.quartz.QuartzServiceV2' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1506)
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1101)
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1062)

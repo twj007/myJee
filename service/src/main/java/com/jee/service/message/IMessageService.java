@@ -1,4 +1,4 @@
-package com.modules.message.service;
+package com.jee.service.message;
 
 import com.common.model.vo.message.EmailEntity;
 import com.common.utils.ResultBody;

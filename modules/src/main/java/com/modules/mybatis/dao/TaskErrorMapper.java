@@ -1,6 +1,6 @@
 package com.modules.mybatis.dao;
 
-import com.modules.mybatis.modal.TaskError;
+import com.common.model.dto.quartz.TaskError;
 
 import java.util.List;
 

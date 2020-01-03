@@ -2,7 +2,8 @@ sys:
   rest:
     login: http://localhost:8081/sys/login/getRoleByUser
     findUserByRole: http://localhost:8081/sys/login/getUserByRole
-
+  webservice:
+    sysUserService: http://localhost:8081/services/ISysUserService?wsdl
 swagger:
   enable: true
 spring:
