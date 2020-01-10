@@ -57,7 +57,7 @@ public class WorkflowUserController extends BaseController{
     private ISysUserService userService;
 
     @GetMapping("/start")
-    @ApiOperation(value = "开启流程", notes = "参数格式： 1.流程部署key， 2.业务数据主键， 3.用于流程判断的参数 4.相关业务url 5.相关备注")
+    @ApiOperation(value = "开启流程", notes = "参数格式： 1.流程部署key， 2.业务数据主键， 3.用于流程判断的参数,流程中的veriables 4.相关业务url 5.相关备注")
     @ApiImplicitParam(name = "params", value = "通用传递参数")
     public ResultBody startWorkflow(@RequestParam("params") ArrayList<String> params, HttpServletRequest request){
         String username = getUserByRequest(request);

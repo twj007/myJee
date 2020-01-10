@@ -39,4 +39,8 @@ public interface ISysUserService {
     List<SysUser> findUserByRole(String taskId);
 
     LoginUser login(LoginUser user);
+
+    int checkUserExists(String username);
+
+    SysUser getUserByPhone(String phone);
 }

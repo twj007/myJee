@@ -16,6 +16,15 @@ spring:
     job-executor-activate: false
   thymeleaf:
     cache: false
+#  data:
+#    mongodb:
+#      host: 106.14.216.218
+#      port: 27017
+#      database: test
+#      uri: mongodb://106.14.216.218/test
+#      username: root
+#      password: 123456
+#
 
 
 swagger:

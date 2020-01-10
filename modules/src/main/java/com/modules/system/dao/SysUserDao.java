@@ -53,4 +53,23 @@ public interface SysUserDao {
     @Select("select u.* from sys_user u, sys_role r, sys_role_user ru where u.id = ru.user_id and r.id = ru.role_id and r.role_name=#{roleName}")
     @ResultType(UserInfo.class)
     List<SysUser> findUserByRole(@Param("roleName") String roleName);
+
+    /****
+     * 检查用户名是否存在
+     * @param username
+     * @return
+     */
+    @Select("select count(*) from sys_user where username = #{username, jdbcType=VARCHAR}")
+    @ResultType(Integer.class)
+    int checkUserExists(@Param("username") String username);
+
+
+    /***
+     * 通过电话号码获取用户
+     * @param phone
+     * @return
+     */
+    @Select("select * from sys_user where phone = #{phone}")
+    @ResultType(SysUser.class)
+    SysUser getUserByPhone(@Param("phone") String phone);
 }

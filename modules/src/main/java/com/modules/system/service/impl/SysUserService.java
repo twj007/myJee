@@ -21,7 +21,7 @@ import java.util.Set;
 @Service
 @Transactional(rollbackFor = Exception.class)
 @DataSource
-public class SysUserService implements ISysUserService {
+public class  SysUserService implements ISysUserService {
 
     @Autowired
     private SysUserDao sysUserDao;
@@ -49,5 +49,15 @@ public class SysUserService implements ISysUserService {
     @Override
     public LoginUser login(LoginUser user) {
         return null;
+    }
+
+    @Override
+    public int checkUserExists(String username) {
+        return sysUserDao.checkUserExists(username);
+    }
+
+    @Override
+    public SysUser getUserByPhone(String phone) {
+        return sysUserDao.getUserByPhone(phone);
     }
 }
