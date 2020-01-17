@@ -96,7 +96,15 @@ public class MessageTest {
         return true;
     }
 
-    public static void main(String[] args) {
+
+    public static <T> boolean test2(List<T> list){
+        list.forEach(r ->{
+            System.out.println(r);
+        });
+        return true;
+    }
+
+  public static void main(String[] args) {
         Map<String, Object> map = new HashMap<>();
         map.put("1", "1");
         test1(map);
