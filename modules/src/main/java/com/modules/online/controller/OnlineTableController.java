@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Api("在线数据库表生成器")
 public class OnlineTableController {
 
-    private static final String PREFIX = "/table/generator/";
+    private static final String PREFIX = "table/generator/";
 
 
     @RequestMapping("/page")

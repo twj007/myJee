@@ -45,7 +45,7 @@ public class LoginController {
 
     private static final String ADMIN_PASSWORD = "123456";
 
-    private static final String PREFIX = "/sys/";
+    private static final String PREFIX = "sys/";
 
     private static final String PHONE_PATTERN = "/^1([38]\\d|4[5-9]|5[0-35-9]|6[56]|7[0-8]|9[189])\\d{8}$/";
 

@@ -61,7 +61,7 @@ public class MessageController {
 
     @RequestMapping("/socket")
     public ModelAndView socket(ModelAndView modelAndView){
-        modelAndView.setViewName("/message/socket");
+        modelAndView.setViewName("message/socket");
         return modelAndView;
     }
 

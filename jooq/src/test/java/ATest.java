@@ -11,5 +11,11 @@ public class ATest {
         String time = "2019-10-16 18:05:22";
         Timestamp timestamp = Timestamp.valueOf(time);
         System.out.println(timestamp.getTime());
+        System.getenv().entrySet().stream().forEach(e -> {
+            System.out.println(e.getKey() + " : " + e.getValue());
+        });
+        System.getProperties().forEach((k, v) -> {
+            System.out.println(k + "=" + v);
+        });
     }
 }

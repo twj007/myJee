@@ -168,28 +168,57 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**.*</include>
+                    <include>**/*.*</include><!-- i18n能读取到 -->
+                    <include>**/*/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+        <finalName>modules</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <!--${project.build.directory} class的输出目录不做设置的话默认代表项目根目录的target目录；
-                                也可以使用“自定义文件夹/自定义文件夹 例如：a/b”，也可以使用绝对路径如：“D:\test” -->
-                            <outputDirectory>${project.build.directory}/classes/lib</outputDirectory>
-                            <excludeTransitive>false</excludeTransitive>
-                            <stripVersion>false</stripVersion>
-                            <includeScope>runtime</includeScope>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-dependency-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>copy-dependencies</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>copy-dependencies</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--&lt;!&ndash;${project.build.directory} class的输出目录不做设置的话默认代表项目根目录的target目录；-->
+                                <!--也可以使用“自定义文件夹/自定义文件夹 例如：a/b”，也可以使用绝对路径如：“D:\test” &ndash;&gt;-->
+                            <!--<outputDirectory>${project.build.directory}/classes/lib</outputDirectory>-->
+                            <!--<excludeTransitive>false</excludeTransitive>-->
+                            <!--<stripVersion>false</stripVersion>-->
+                            <!--<includeScope>runtime</includeScope>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+          <plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+              <configuration>
+                  <mainClass>com.JeeApplication</mainClass>
+              </configuration>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+                      </goals>
+                      <!--可以生成不含依赖包的不可执行Jar包-->
+                      <!-- configuration>
+                        <classifier>exec</classifier>
+                      </configuration> -->
+                  </execution>
+              </executions>
+          </plugin>
         </plugins>
     </build>
 </project>

@@ -73,7 +73,7 @@ public class QuartzController {
     @RequestMapping(value = "/task/list/page")
     @Deprecated
     public ModelAndView listPage(ModelAndView modelAndView){
-        modelAndView.setViewName("/quartz/list");
+        modelAndView.setViewName("quartz/list");
         return modelAndView;
     }
 
@@ -100,7 +100,7 @@ public class QuartzController {
     @RequestMapping(value = "/task/add/page", method = RequestMethod.GET)
     @Deprecated
     public ModelAndView addTaskPage() {
-        return new ModelAndView("/quartz/addtask");
+        return new ModelAndView("quartz/addtask");
     }
 
     @RequestMapping(value = "/task/add", method = RequestMethod.POST)
@@ -114,7 +114,7 @@ public class QuartzController {
     public ModelAndView editTaskPage(ModelAndView model, String id) {
         QuartzTaskInformations taskInformation = quartzService.getTaskById(id);
         model.addObject("taskInformation", taskInformation);
-        model.setViewName("/quartz/updateTask");
+        model.setViewName("quartz/updateTask");
         return model;
     }
 
@@ -154,7 +154,7 @@ public class QuartzController {
     @RequestMapping(value = "/task/record/page", method = RequestMethod.GET)
     @Deprecated
     public ModelAndView taskRecordPage(ModelAndView modelAndView, @RequestParam(value = "taskNo") String taskNo){
-        modelAndView.setViewName("/quartz/taskRecords");
+        modelAndView.setViewName("quartz/taskRecords");
         modelAndView.addObject("taskNo", taskNo);
         return modelAndView;
     }
@@ -207,15 +207,15 @@ public class QuartzController {
     public ModelAndView detailTaskErrors(@RequestParam(value = "recordId", required = false) String recordId, ModelAndView model) {
         try {
             if (StringUtils.isEmpty(recordId)) {
-                return new ModelAndView("/quartz/list");
+                return new ModelAndView("quartz/list");
             }
             QuartzErrorTasks taskErrors = quartzService.detailTaskErrors(recordId);
             model.addObject("taskErrors", taskErrors);
-            model.setViewName("/quartz/taskErrors");
+            model.setViewName("quartz/taskErrors");
             return model;
         } catch (Exception e) {
             log.error("");
-            return new ModelAndView("/quartz/list");
+            return new ModelAndView("quartz/list");
         }
     }
 
@@ -244,7 +244,7 @@ public class QuartzController {
     @RequestMapping("/cron/page")
     @ApiOperation("获取计算cron页面")
     public ModelAndView toCronPage(ModelAndView modelAndView){
-        modelAndView.setViewName("/quartz/cron");
+        modelAndView.setViewName("quartz/cron");
         return modelAndView;
     }
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>展示图表</title>
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/echarts/echarts.min.js}"></script>
+</head>
+<body>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<input type="hidden" th:value="${planId}" id="planId">
+<div id="main" style="width: 600px;height:400px;"></div>
+</body>
+<script>
+    $(function(){
+        $.ajax({
+            url: '../getCutData',
+            data: {
+                planId: $('#planId').val()
+            },
+            method: 'POST',
+            success: function(data){
+                if(data.body){
+                    var monthAndYear = new Array();
+                    var money = new Array();
+                    var details = data.body;
+                    details.forEach(function(d){
+                        monthAndYear.push(d.year + "-" + (parseInt(d.month)+1) + "-" + d.fromDay + "~" + d.year + "-" + (parseInt(d.month)+1) + '-' + d.toDay);
+                        money.push(d.money);
+                    });
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: 'ECharts 入门示例'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['金额']
+                        },
+                        xAxis: {
+                            data: monthAndYear
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '金额',
+                            type: 'bar',
+                            data: money
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                }else{
+                    alert('数据为空');
+                }
+
+            },
+            onError: function(res){
+                console.log(res);
+                alert(res);
+            }
+        });
+    });
+</script>
+</html>

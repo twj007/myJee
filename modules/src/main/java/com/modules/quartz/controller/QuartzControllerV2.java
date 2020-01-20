@@ -38,7 +38,7 @@ public class QuartzControllerV2 {
     @Autowired
     private QuartzServiceV2 quartzServiceV2;
 
-    private static final String PREFIX = "/quartz/v2/";
+    private static final String PREFIX = "quartz/v2/";
 
     private static final String TASK = "task";
     private static final String RECORD = "record";
@@ -229,7 +229,6 @@ public class QuartzControllerV2 {
 
         return null;
     }
-
 
 
 

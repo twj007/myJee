@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.modules.system.dao.TestDao" >
+
+    <sql id="total">
+        id, start_date as startDate, end_date as endDate, total_money as totalMoney, create_date as createDate
+    </sql>
+    <sql id="detail">
+        id, plan_id as planId, `year`, `month`, money, from_day as fromDay, to_day as toDay
+    </sql>
+
+    <select id="getActivities" resultType="com.common.model.ActivityModel">
+        select <include refid="total"/>
+        from sys_activity
+    </select>
+
+    <delete id="deleteTempDate">
+        delete from sys_activity_temp where 1=1
+    </delete>
+
+    <insert id="saveToTempTable" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Long" keyColumn="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_activity_temp (`plan_id`, `year`, `month`, `from_day`, `to_day`, `money`)
+        values
+        <foreach collection="list" item="i" separator=",">
+            (#{i.planId, jdbcType=NUMERIC}, #{i.year, jdbcType=NUMERIC}, #{i.month, jdbcType=NUMERIC}, #{i.fromDay, jdbcType=NUMERIC}, #{i.toDay, jdbcType=NUMERIC}, #{i.money, jdbcType=NUMERIC})
+        </foreach>
+    </insert>
+
+    <select id="getActivityDetails" parameterType="com.common.model.ActivityModelDetail" resultType="com.common.model.ActivityModelDetail">
+      select <include refid="detail"/>
+        from sys_activity_temp
+        <where>
+            <if test="planId != null">
+                plan_id=#{planId}
+            </if>
+        </where>
+    </select>
+
+    <insert id="saveActivity" parameterType="com.common.model.ActivityModel" >
+        <selectKey resultType="java.lang.Long" keyColumn="id" order="AFTER">
+            select LAST_INSERT_KEY()
+        </selectKey>
+        insert into sys_activity (start_date, end_date, total_money, create_date)
+        value (#{startDate, jdbcType=DATE}, #{endDate, jdbcType=DATE}, #{totalMoney, jdbcType=NUMERIC}, now())
+    </insert>
+
+</mapper>

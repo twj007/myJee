@@ -31,7 +31,7 @@ import java.util.List;
 @Slf4j
 public class AnnounceControllerV2 {
 
-    private static final String PREFIX = "/sys/announce/v2/";
+    private static final String PREFIX = "sys/announce/v2/";
 
     private static final String ANNOUNCE_ALL = "announce_all";
 

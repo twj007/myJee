@@ -24,7 +24,7 @@ public class StompController {
 
     @RequestMapping("/socket/stomp")
     public ModelAndView stomp(ModelAndView modelAndView){
-        modelAndView.setViewName("/sys/announce/v2/stomp");
+        modelAndView.setViewName("sys/announce/v2/stomp");
         return modelAndView;
     }
 

@@ -4,6 +4,8 @@ import com.common.model.dto.announce.AnnounceDTO;
 import com.common.model.vo.system.SysUser;
 import com.common.utils.ResultBody;
 import com.common.utils.Results;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.jooq.*;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +32,14 @@ import java.util.Map;
  **/
 @RestController
 @RequestMapping("/jooq")
+@Api("jooq orm demo")
 public class JooqController {
 
     @Autowired
     DSLContext dslContext;
 
     @GetMapping("/test1")
+    @ApiOperation("查")
     public ResultBody search(SysUser user){
         Result<Record> results = dslContext.select().from("sys_user").fetch();
         List<SysUser> users = new ArrayList<>();
@@ -49,6 +53,7 @@ public class JooqController {
     }
 
     @GetMapping("/test2")
+    @ApiOperation("增")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public ResultBody insert(){
         AnnounceDTO announceDTO = new AnnounceDTO();
@@ -70,6 +75,7 @@ public class JooqController {
     }
 
     @GetMapping("/test3")
+    @ApiOperation("改")
     public ResultBody update(Long id){
         if(id == null){
             return Results.INVALIDATE.result("参数必须");
@@ -109,6 +115,7 @@ public class JooqController {
     }
 
     @GetMapping("/test4")
+    @ApiOperation("删")
     public ResultBody delete(@RequestParam("id") Long id){
         Table table = DSL.table("sys_message");
         Condition condition = DSL.field("id").eq(id);
@@ -149,7 +156,7 @@ public class JooqController {
             ResultSetMetaData rsmd = results.getMetaData();
             List<Map> list = new ArrayList();
             while(results.next()){
-                Map map = new HashMap();
+                Map map = new HashMap(16);
                 for(int i = 1;i<=rsmd.getColumnCount();i++){
                     map.put(rsmd.getColumnName(i),results.getString(rsmd.getColumnName(i)));
                 }

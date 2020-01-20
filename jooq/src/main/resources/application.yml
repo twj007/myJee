@@ -6,9 +6,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/mall?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT
     username: root
-    password: xxxx
+    password: 123456
 
 clickhouse:
   url: jdbc:clickhouse://106.14.216.218:8123/tutorial
   username: default
-  password: xxxx
+  password: 123456
