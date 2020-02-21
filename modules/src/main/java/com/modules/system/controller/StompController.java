@@ -28,6 +28,11 @@ public class StompController {
         return modelAndView;
     }
 
+    @RequestMapping("/socket/broadcast")
+    public ModelAndView broadcasrMessage(ModelAndView modelAndView){
+        modelAndView.setViewName("/sys/announce/v2/broadcast");
+        return modelAndView;
+    }
 
     @RequestMapping("/broadcast")
     public ResultBody broadcast(){

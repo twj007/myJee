@@ -1,0 +1,672 @@
+{
+	"info": {
+		"_postman_id": "1c7eb3b2-f66d-4c27-ad32-94bbefcf772e",
+		"name": "jee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "quartz",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/quartz/list?currentPage=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"quartz",
+								"list"
+							],
+							"query": [
+								{
+									"key": "currentPage",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "activiti",
+			"item": [
+				{
+					"name": "localhost:8081/sys/workflow/start?params=test_process,1000      创建初始流程",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"type": "text",
+								"value": "{{X-Access-Token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8082/sys/workflow/user/start?params=test_process,200",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"start"
+							],
+							"query": [
+								{
+									"key": "params",
+									"value": "test_process,200"
+								}
+							]
+						},
+						"description": "流程处理"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/user/todo?pageNum=0&pageSize=10",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/user/todo?pageNum=0&pageSize=10",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"todo"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "获取待办"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/assign?eventId=27518&username=jien",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"type": "text",
+								"value": "{{X-Access-Token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/user/assign?eventId=17504&username=jien",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"assign"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "17504"
+								},
+								{
+									"key": "username",
+									"value": "jien"
+								}
+							]
+						},
+						"description": "授权处理"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/start?params=test_process,1000",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/user/process?eventId=17504&pass=Y",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"process"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "17504"
+								},
+								{
+									"key": "pass",
+									"value": "Y"
+								}
+							]
+						},
+						"description": "启动流程"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/user/frontTask?eventId=37501",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"type": "text",
+								"value": "{{X-Access-Token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/user/frontTask?eventId=40001",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"frontTask"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "40001"
+								}
+							]
+						},
+						"description": "之前任务结点"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/user/backTo?taskId=accounting&targetTaskId=manager",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/user/backTo?taskId=accounting&targetTaskId=manager&eventId=40001",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"backTo"
+							],
+							"query": [
+								{
+									"key": "taskId",
+									"value": "accounting"
+								},
+								{
+									"key": "targetTaskId",
+									"value": "manager"
+								},
+								{
+									"key": "eventId",
+									"value": "40001"
+								}
+							]
+						},
+						"description": "回退"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/user/cancel?eventIds=37501",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/user/cancel?eventIds=37501",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "eventIds",
+									"value": "37501"
+								}
+							]
+						},
+						"description": "取消流程\n"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/user/selectNextUser?eventId=40001 查询流程候选人",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8082/sys/workflow/user/selectNextUser?eventId=22501",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"selectNextUser"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "22501"
+								}
+							]
+						},
+						"description": "获取下一个处理人"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/definition/list",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/definition/list",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"definition",
+								"list"
+							]
+						},
+						"description": "获取流程定义"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/definition/status?key=test_process&status=running",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/definition/status?key=test_process&status=running",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"definition",
+								"status"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "test_process"
+								},
+								{
+									"key": "status",
+									"value": "running"
+								}
+							]
+						},
+						"description": "修改流程部署状态\n"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/definition/deploy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "uploads",
+									"type": "file",
+									"src": "/C:/Users/info/Documents/myJee/workflow/src/main/resources/processes/test_process.bpmn"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8082/sys/workflow/definition/deploy",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"sys",
+								"workflow",
+								"definition",
+								"deploy"
+							]
+						},
+						"description": "上传流程定义"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/definition/definition?key=fix_travel4qyzn",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8082/sys/workflow/definition/definition?key=test_process",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"sys",
+								"workflow",
+								"definition",
+								"definition"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "test_process"
+								}
+							]
+						},
+						"description": "获取流程图\n"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/definition/instance/image?eventId=52501",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Access-Token",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8082/sys/workflow/definition/instance/image?eventId=17504",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"sys",
+								"workflow",
+								"definition",
+								"instance",
+								"image"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "17504"
+								}
+							]
+						},
+						"description": "获取实例的流程图片\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8081/sys/workflow/user/history?pageNum=0&pageSize=5",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-ACCESS-TOKEN",
+								"value": "{{X-Access-Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/sys/workflow/user/history?pageNum=0&pageSize=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"sys",
+								"workflow",
+								"user",
+								"history"
+							],
+							"query": [
+								{
+									"key": "pageNum",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "5"
+								}
+							]
+						},
+						"description": "获取我的事务"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "message",
+			"item": [
+				{
+					"name": "get read msg",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/message/socket/push?userId=51255&msg={{$randomInt}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"message",
+								"socket",
+								"push"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "51255"
+								},
+								{
+									"key": "msg",
+									"value": "{{$randomInt}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get read msg Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/message/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"message",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "localhost:8081/sys/login?username=jien&password=123456",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97d97ed4-6014-426f-b875-593ebeed2497",
+						"exec": [
+							"var t = postman.getResponseHeader('X-Access-Token')\r",
+							"\r",
+							"console.log('toekn：' + t)\r",
+							"\r",
+							"postman.setEnvironmentVariable('X-Access-Token', t)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/sys/login/login?username=jien&password=123456",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"sys",
+						"login",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "jien"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						}
+					]
+				},
+				"description": "获取jwt"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

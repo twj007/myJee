@@ -470,6 +470,7 @@
                 };
             },
             onPostBody: function(data){
+                console.log(typeof data);
                 $('#table').find("input:checkbox").each(function (i) {
                     var $check = $(this);
                     if ($check.attr("id") && $check.next("label")) {

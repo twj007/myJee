@@ -54,6 +54,11 @@ public class TestService {
         log.info("【quartz job】 job执行完成，总共分摊出：{}条数据", count);
     }
 
+    /***
+     * 创建按月分摊明细
+     * @param model
+     * @return
+     */
     private List<ActivityModelDetail> createDetail(ActivityModel model){
         List<ActivityModelDetail> details = new ArrayList<>();
         Calendar startCalendar = Calendar.getInstance();
@@ -78,24 +83,28 @@ public class TestService {
 
         // 2， 计算分割日期
 
+        // 计算共有几个月
         int yearMonth = 0;
         if(startCalendar.get(Calendar.YEAR) != endCalendar.get(Calendar.YEAR)){
             yearMonth = (endCalendar.get(Calendar.YEAR) - startCalendar.get(Calendar.YEAR) ) * 12;
         }
+        // 获取开始月份与结束月份
         int startMonth = startCalendar.get(Calendar.MONTH);
         int endMonth = endCalendar.get(Calendar.MONTH);
         int monthTotal = endMonth - startMonth + 1 + yearMonth;
+        // 为同一个月时无需分摊记录当月情况
         if(monthTotal == 1){
             ActivityModelDetail detailTop = new ActivityModelDetail();
             detailTop.setPlanId(model.getId());
             detailTop.setFromDay(startCalendar.get(Calendar.DAY_OF_MONTH));
-            detailTop.setToDay(startCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+            detailTop.setToDay(endCalendar.get(Calendar.DAY_OF_MONTH));
             detailTop.setYear(startCalendar.get(Calendar.YEAR));
             detailTop.setMonth(startMonth);
             BigDecimal startMoney = new BigDecimal(detailTop.getToDay() - detailTop.getFromDay() + 1).multiply(avgMoney).setScale(2, BigDecimal.ROUND_HALF_UP);
             detailTop.setMoney(startMoney.setScale(4, BigDecimal.ROUND_HALF_UP));
             details.add(detailTop);
         }else{
+            BigDecimal leftMoney = new BigDecimal(0);
             ActivityModelDetail detailTop = new ActivityModelDetail();
             detailTop.setPlanId(model.getId());
             detailTop.setFromDay(startCalendar.get(Calendar.DAY_OF_MONTH));
@@ -104,6 +113,7 @@ public class TestService {
             detailTop.setMonth(startMonth);
             BigDecimal startMoney = new BigDecimal(detailTop.getToDay() - detailTop.getFromDay() + 1).multiply(avgMoney).setScale(2, BigDecimal.ROUND_HALF_UP);
             detailTop.setMoney(startMoney.setScale(4, BigDecimal.ROUND_HALF_UP));
+            leftMoney = leftMoney.add(detailTop.getMoney());
             details.add(detailTop);
             for(int i = 1; i < monthTotal - 1; i++){
                 ActivityModelDetail detail = new ActivityModelDetail();
@@ -115,6 +125,7 @@ public class TestService {
                 detail.setMonth(startCalendar.get(Calendar.MONTH));
                 BigDecimal money = new BigDecimal(detail.getToDay() - detail.getFromDay() + 1).multiply(avgMoney);
                 detail.setMoney(money.setScale(4, BigDecimal.ROUND_HALF_UP));
+                leftMoney = leftMoney.add(detail.getMoney());
                 details.add(detail);
             }
             ActivityModelDetail detailBottom = new ActivityModelDetail();
@@ -123,7 +134,7 @@ public class TestService {
             detailBottom.setYear(endCalendar.get(Calendar.YEAR));
             detailBottom.setToDay(endCalendar.get(Calendar.DAY_OF_MONTH));
             detailBottom.setMonth(endCalendar.get(Calendar.MONTH));
-            BigDecimal endMoney = new BigDecimal(detailBottom.getToDay() - detailBottom.getFromDay() + 1).multiply(avgMoney);
+            BigDecimal endMoney = model.getTotalMoney().subtract(leftMoney);
             detailBottom.setMoney(endMoney.setScale(4, BigDecimal.ROUND_HALF_UP));
             details.add(detailBottom);
         }

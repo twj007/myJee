@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>推送消息</title>
+    <title>广播消息</title>
     <!-- jquery -->
     <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
     <script th:src="@{/static/js/sockJS1.4.0/sock.min.js}"></script>
@@ -66,8 +66,8 @@
         client.connect('', '', on_connect, on_error, '/');
     }
     $(function(){
-        // connectToBoardcast();
-        connectStomp();
+        connectToBoardcast();
+        // connectStomp();
     });
 </script>
 </body>
