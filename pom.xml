@@ -37,7 +37,7 @@
         <springfox-version>2.9.2</springfox-version>
         <!--消息队列-->
         <rocketmq-version>4.1.0-incubating</rocketmq-version>
-        <mysql-driver-version>5.1.47</mysql-driver-version>
+        <mysql-driver-version>8.0.16</mysql-driver-version>
         <junit-version>4.0.0</junit-version>
         <!-- springcloud version -->
         <jwt-version>3.4.0</jwt-version>
